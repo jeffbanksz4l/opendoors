@@ -33,9 +33,9 @@ public class ClientsDAO {
      * @return
      */
     public int save(Clients clients) {
-        String sql = "INSERT INTO Clients (Last_Name, First_Name, Address_Line_1, Address_Line_2, Address_Line_3, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Clients (First_Name, Last_Name, Address_Line_1, Address_Line_2, Address_Line_3, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        Object[] values = {clients.getLast_Name(), clients.getFirst_Name(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getAddress_Line_3(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus()};
+        Object[] values = {clients.getFirst_Name(), clients.getLast_Name(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getAddress_Line_3(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus()};
 
         return template.update(sql, values);
     }
@@ -46,9 +46,9 @@ public class ClientsDAO {
      * @return
      */
     public int update(Clients clients) {
-        String sql = "UPDATE Clients SET (Last_Name=?, First_Name=?, Address_Line_1=?, Address_Line_2=?, Address_Line_3=?, City=?, State=?, Postal_Code=?, Email=?, Phone_1=?, Phone_2=?, Status=?) WHERE ClientsID = ?";
+        String sql = "UPDATE Clients SET (First_Name=?, Last_Name=?, Address_Line_1=?, Address_Line_2=?, Address_Line_3=?, City=?, State=?, Postal_Code=?, Email=?, Phone_1=?, Phone_2=?, Status=?) WHERE ClientsID = ?";
 
-        Object[] values = {clients.getLast_Name(), clients.getFirst_Name(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getAddress_Line_3(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus(), clients.getID()};
+        Object[] values = {clients.getFirst_Name(), clients.getLast_Name(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getAddress_Line_3(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus(), clients.getID()};
 
         return template.update(sql, values);
     }
@@ -75,8 +75,8 @@ public class ClientsDAO {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
                 c.setID(rs.getInt("ClientsID"));
-                c.setLast_Name(rs.getString("Last_Name"));
                 c.setFirst_Name(rs.getString("First_Name"));
+                c.setLast_Name(rs.getString("Last_Name"));
                 c.setAddress_Line_1(rs.getString("Address_Line_1"));
                 c.setAddress_Line_2(rs.getString("Address_Line_2"));
                 c.setAddress_Line_3(rs.getString("Address_Line_3"));
@@ -98,7 +98,7 @@ public class ClientsDAO {
      * @return
      */
     public Clients getClientsById(int id) {
-        String sql = "SELECT ClientsID AS id, (Last_Name, First_Name, Address_Line_1, Address_Line_2, Address_Line_3, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) FROM Clients WHERE ClientsID = ?";
+        String sql = "SELECT ClientsID AS id, (First_Name, Last_Name, Address_Line_1, Address_Line_2, Address_Line_3, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) FROM Clients WHERE ClientsID = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Clients>(Clients.class));
     }
 }

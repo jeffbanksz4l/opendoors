@@ -9,8 +9,8 @@ import java.io.Serializable;
 public class Clients implements Serializable {
 
     private int ClientsID;
-    private String Last_Name;
     private String First_Name;
+    private String Last_Name;
     private String Address_Line_1;
     private String Address_Line_2;
     private String Address_Line_3;
@@ -42,22 +42,6 @@ public class Clients implements Serializable {
      *
      * @return
      */
-    public String getLast_Name() {
-        return Last_Name;
-    }
-
-    /**
-     *
-     * @param Last_Name
-     */
-    public void setLast_Name(String Last_Name) {
-        this.Last_Name = Last_Name;
-    }
-
-    /**
-     *
-     * @return
-     */
     public String getFirst_Name() {
         return First_Name;
     }
@@ -68,6 +52,22 @@ public class Clients implements Serializable {
      */
     public void setFirst_Name(String First_Name) {
         this.First_Name = First_Name;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getLast_Name() {
+        return Last_Name;
+    }
+
+    /**
+     *
+     * @param Last_Name
+     */
+    public void setLast_Name(String Last_Name) {
+        this.Last_Name = Last_Name;
     }
 
     /**
@@ -237,8 +237,8 @@ public class Clients implements Serializable {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("Clients ID: " + this.ClientsID + ";");
-        buffer.append("Last Name: " + this.Last_Name + ";");
         buffer.append("First Name: " + this.First_Name + ";");
+        buffer.append("Last Name: " + this.Last_Name + ";");
         buffer.append("Address Line 1: " + this.Address_Line_1 + ";");
         buffer.append("Address Line 2: " + this.Address_Line_2 + ";");
         buffer.append("Address Line 3: " + this.Address_Line_3 + ";");
