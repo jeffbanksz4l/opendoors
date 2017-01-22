@@ -1,39 +1,33 @@
-<%-- 
-    Document   : clientseditform
-    Created on : Jan 16, 2017, 1:03:04 PM
-    Author     : jeffb
---%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="theme/header.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Clients/Prospects</title>
-        <style>body { font-family: Verdana, Geneva, sans-serif; }</style>
-    </head>
-    <body>
-        <h1>Edit Clients/Prospects</h1>
+<header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Manage Clients/Prospects > Edit Clients/Prospects</b></h5>
+</header>
 
-        <form:form method="POST" action="/opendoors/clients/editsave">
-            <table>
-                <tr>
-                    <td></td>
-                    <td><form:hidden path="id" /></td>
-                </tr>
-                <tr>
-                    <td>Name: </td>
-                    <td><form:input path="name"  /></td>
-                </tr>
+<div class="w3-row-padding w3-half w3-margin-bottom">
 
-                <tr>
-                    <td> </td>
-                    <td><input type="submit" value="Edit Save" /></td>
-                </tr>
-            </table>
+    <div class="w3-card-4">
+        <div class="w3-container w3-blue">
+            <h2>Header</h2>
+        </div>
+
+        <form:form method="POST" action="/opendoors/clients/editsave" cssClass="w3-container">
+            <form:hidden path="id"  />
+
+            <div class="w3-padding-8">
+                <label><b>Name</b></label>
+                <form:input path="name" cssClass="w3-input w3-border"  />
+            </div>
+
+            <div class="w3-padding-8">
+                <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+            </div>
         </form:form>
-    </body>
-</html>
+
+    </div>
+</div>
+
+<%@ include file="theme/footer.jsp" %>

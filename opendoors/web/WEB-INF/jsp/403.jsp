@@ -1,28 +1,16 @@
-<%-- 
-    Document   : 403
-    Created on : Jan 16, 2017, 12:50:42 PM
-    Author     : jeffb
---%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="theme/header.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>403 Page</title>
-    </head>
-    <body>
-        <h1>HTTP Status 403 - Access is denied</h1>
+<header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-times"></i> HTTP Status 403 - Access is denied</b></h5>
+</header>
 
-        <c:choose>
-            <c:when test="${empty username}">
-                <h2>You do not have permission to access this page!</h2>
-            </c:when>
-            <c:otherwise>
-                <h2>Username: ${username} <br/>You do not have permission to access this page!</h2>
-                </c:otherwise>
-            </c:choose>
-    </body>
-</html>
+<div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-panel w3-white">
+        <h2>Your access level does not permit you to access this page.</h2>
+    </div>
+</div>
+
+<%@ include file="theme/footer.jsp" %>

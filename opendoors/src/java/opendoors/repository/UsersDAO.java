@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import opendoors.objects.Users;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 /**
  *
@@ -33,7 +34,7 @@ public class UsersDAO {
      * @return
      */
     public int save(Users users) {
-        String sql = "INSERT INTO Clients (Username, Password, Enabled) values (?, md5(?), ?)";
+        String sql = "INSERT INTO Users (Username, Password, Enabled) values (?, md5(?), ?)";
 
         Object[] values = {users.getUsername(), users.getPassword(), users.getEnabled()};
 
@@ -46,7 +47,7 @@ public class UsersDAO {
      * @return
      */
     public int update(Users users) {
-        String sql = "UPDATE Clients SET (Username=?, Password=?, Enabled=?) WHERE Username = ?";
+        String sql = "UPDATE Users SET (Username = ?, Password = md5(?), Enabled = ?) WHERE Username = ?";
 
         Object[] values = {users.getUsername(), users.getPassword(), users.getEnabled()};
 
@@ -73,11 +74,11 @@ public class UsersDAO {
     public List<Users> getUsersList() {
         return template.query("SELECT * FROM Users", new RowMapper<Users>() {
             public Users mapRow(ResultSet rs, int row) throws SQLException {
-                Users c = new Users();
-                c.setUsername(rs.getString("Username"));
-                c.setPassword(rs.getString("Password"));
-                c.setEnabled(rs.getString("Enabled"));
-                return c;
+                Users u = new Users();
+                u.setUsername(rs.getString("Username"));
+                u.setPassword(rs.getString("Password"));
+                u.setEnabled(rs.getString("Enabled"));
+                return u;
             }
         });
     }
@@ -90,5 +91,39 @@ public class UsersDAO {
     public Users getUsersById(int id) {
         String sql = "SELECT Username AS id, (Username, Password, Enabled) FROM Users WHERE Username = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Users>(Users.class));
+    }
+
+    /**
+     *
+     * @param start
+     * @param total
+     * @return
+     */
+    public List<Users> getUsersByPage(int start, int total) {
+        String sql = "SELECT * FROM Users LIMIT " + (start - 1) + "," + total;
+        return template.query(sql, new RowMapper<Users>() {
+            public Users mapRow(ResultSet rs, int row) throws SQLException {
+                Users u = new Users();
+                u.setUsername(rs.getString(1));
+                u.setPassword(rs.getString(2));
+                u.setEnabled(rs.getString(3));
+                return u;
+            }
+        });
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getUsersCount() {
+        String sql = "SELECT COUNT(Users) AS rowcount FROM Users";
+        SqlRowSet rs = template.queryForRowSet(sql);
+
+        if (rs.next()) {
+            return rs.getInt("rowcount");
+        }
+
+        return 1;
     }
 }
