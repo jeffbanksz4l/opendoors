@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
-<%@ include file="theme/header.jsp" %>
+<%@ include file="header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Manage Clients/Prospects > Add Clients/Prospects</b></h5>
@@ -17,7 +17,18 @@
         <form:form method="post" action="save" cssClass="w3-container">
             <div class="w3-padding-8">
                 <label><b>Name</b></label>
-                <form:input path="name" cssClass="w3-input w3-border"  />
+                <form:input path="First_Name" cssClass="w3-input w3-border"  />
+                <form:input path="Last_Name" cssClass="w3-input w3-border"  />
+                <form:input path="Address_Line_1" cssClass="w3-input w3-border"  />
+                <form:input path="Address_Line_2" cssClass="w3-input w3-border"  />
+                <form:input path="Address_Line_3" cssClass="w3-input w3-border"  />
+                <form:input path="City" cssClass="w3-input w3-border"  />
+                <form:input path="State" cssClass="w3-input w3-border"  />
+                <form:input path="Postal_Code" cssClass="w3-input w3-border"  />
+                <form:input path="Email" cssClass="w3-input w3-border"  />
+                <form:input path="Phone_1" cssClass="w3-input w3-border"  />
+                <form:input path="Phone_2" cssClass="w3-input w3-border"  />
+                <form:input path="Status" cssClass="w3-input w3-border"  />
             </div>
 
             <div class="w3-padding-8">
@@ -28,4 +39,4 @@
 
 </div>
 
-<%@ include file="theme/footer.jsp" %>
+<%@ include file="footer.jsp" %>

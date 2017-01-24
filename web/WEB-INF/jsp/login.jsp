@@ -39,7 +39,6 @@
                             <button class="w3-btn-block w3-green w3-section w3-padding" type="submit">Login</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

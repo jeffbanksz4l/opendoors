@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 
-<%@ include file="theme/header.jsp" %>
+<%@ include file="header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Manage Clients/Prospects > Edit Clients/Prospects</b></h5>
@@ -30,4 +30,4 @@
     </div>
 </div>
 
-<%@ include file="theme/footer.jsp" %>
+<%@ include file="footer.jsp" %>
