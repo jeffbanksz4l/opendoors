@@ -29,10 +29,10 @@
 
         <c:forEach var="clients" items="${list}">   
             <tr>  
-                <td>${clients.name}</td>  
+                <td>${clients.first_Name}</td>  
                 <td>
-                    <a href="<c:url value="/clients/editclients/${clients.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/clients/deleteclients/${clients.id}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
+                    <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/clients/deleteclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
                 </td>  
             </tr>  
         </c:forEach>  

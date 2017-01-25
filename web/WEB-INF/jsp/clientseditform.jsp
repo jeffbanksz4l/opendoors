@@ -14,12 +14,23 @@
             <h2>Header</h2>
         </div>
 
-        <form:form method="POST" action="/opendoors/clients/editsave" cssClass="w3-container">
-            <form:hidden path="id"  />
+        <form:form method="POST" action="/OpenDoors/clients/editsave" cssClass="w3-container">
+            <form:hidden path="clientsID"  />
 
             <div class="w3-padding-8">
-                <label><b>Name</b></label>
-                <form:input path="name" cssClass="w3-input w3-border"  />
+                <!--<label><b>Name</b></label> -->
+                <form:input path="First_Name" cssClass="w3-input w3-border" placeholder="First Name"  />
+                <form:input path="Last_Name" cssClass="w3-input w3-border" placeholder="Last Name"  />
+                <form:input path="Address_Line_1" cssClass="w3-input w3-border" placeholder="Address Line 1"  />
+                <form:input path="Address_Line_2" cssClass="w3-input w3-border" placeholder="Address Line 2"  />
+                <form:input path="Address_Line_3" cssClass="w3-input w3-border" placeholder="Address Line 3"  />
+                <form:input path="City" cssClass="w3-input w3-border" placeholder="City"  />
+                <form:input path="State" cssClass="w3-input w3-border" placeholder="State"  />
+                <form:input path="Postal_Code" cssClass="w3-input w3-border" placeholder="Postal Code"  />
+                <form:input path="Email" cssClass="w3-input w3-border" placeholder="Email"  />
+                <form:input path="Phone_1" cssClass="w3-input w3-border" placeholder="Phone 1"  />
+                <form:input path="Phone_2" cssClass="w3-input w3-border" placeholder="Phone 2"  />
+                <form:input path="Status" cssClass="w3-input w3-border" placeholder="Status"  />
             </div>
 
             <div class="w3-padding-8">

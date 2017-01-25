@@ -26,16 +26,16 @@ public class Clients implements Serializable {
      *
      * @return
      */
-    public int getID() {
+    public int getClientsID() {
         return ClientsID;
     }
 
     /**
      *
-     * @param ID
+     * @param ClientsID
      */
-    public void setID(int ID) {
-        this.ClientsID = ID;
+    public void setClientsID(int ClientsID) {
+        this.ClientsID = ClientsID;
     }
 
     /**

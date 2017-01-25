@@ -47,9 +47,9 @@ public class ClientsDAO {
      * @return
      */
     public int update(Clients clients) {
-        String sql = "UPDATE Clients SET (First_Name = ?, Last_Name = ?, Address_Line_1 = ?, Address_Line_2 = ?, Address_Line_3 = ?, City = ?, State = ?, Postal_Code = ?, Email = ?, Phone_1 = ?, Phone_2 = ?, Status = ?) WHERE ClientsID = ?";
+        String sql = "UPDATE Clients SET First_Name = ?, Last_Name = ?, Address_Line_1 = ?, Address_Line_2 = ?, Address_Line_3 = ?, City = ?, State = ?, Postal_Code = ?, Email = ?, Phone_1 = ?, Phone_2 = ?, Status = ? WHERE ClientsID = ?";
 
-        Object[] values = {clients.getFirst_Name(), clients.getLast_Name(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getAddress_Line_3(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus(), clients.getID()};
+        Object[] values = {clients.getFirst_Name(), clients.getLast_Name(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getAddress_Line_3(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus(), clients.getClientsID()};
 
         return template.update(sql, values);
     }
@@ -75,7 +75,7 @@ public class ClientsDAO {
         return template.query("SELECT * FROM Clients", new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
-                c.setID(rs.getInt("Clients ID"));
+                c.setClientsID(rs.getInt("Clients ID"));
                 c.setFirst_Name(rs.getString("First Name"));
                 c.setLast_Name(rs.getString("Last Name"));
                 c.setAddress_Line_1(rs.getString("Address Line 1"));
@@ -99,7 +99,7 @@ public class ClientsDAO {
      * @return
      */
     public Clients getClientsById(int id) {
-        String sql = "SELECT ClientsID AS id, (First_Name, Last_Name, Address_Line_1, Address_Line_2, Address_Line_3, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) FROM Clients WHERE ClientsID = ?";
+        String sql = "SELECT ClientsID, First_Name, Last_Name, Address_Line_1, Address_Line_2, Address_Line_3, City, State, Postal_Code, Email, Phone_1, Phone_2, Status FROM Clients WHERE ClientsID = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Clients>(Clients.class));
     }
 
@@ -114,7 +114,7 @@ public class ClientsDAO {
         return template.query(sql, new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
-                c.setID(rs.getInt(1));
+                c.setClientsID(rs.getInt(1));
                 c.setFirst_Name(rs.getString(2));
                 c.setLast_Name(rs.getString(3));
                 c.setAddress_Line_1(rs.getString(4));
