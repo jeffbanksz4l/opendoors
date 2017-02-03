@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import opendoors.objects.Users;
+import java.util.logging.Logger;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 /**
@@ -19,6 +20,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 public class UsersDAO {
 
     JdbcTemplate template;
+
+    private static final Logger logger = Logger.getLogger(UsersDAO.class.getName());
 
     /**
      *
@@ -89,6 +92,7 @@ public class UsersDAO {
      * @return
      */
     public Users getUsersById(int id) {
+        logger.info("Get Users by ID: " + id);
         String sql = "SELECT Username AS id, (Username, Password, Enabled) FROM Users WHERE Username = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Users>(Users.class));
     }

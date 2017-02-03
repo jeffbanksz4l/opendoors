@@ -1,6 +1,7 @@
 package opendoors.objects;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  *
@@ -15,106 +16,73 @@ public class Interactions implements Serializable {
     private String Contact_Type;
     private String Conversations;
 
-    /**
-     *
-     * @return
-     */
+    private Clients clients;
+    private Map<Integer, String> client;
+
     public int getInteractionsID() {
         return InteractionsID;
     }
 
-    /**
-     *
-     * @param InteractionsID
-     */
     public void setInteractionsID(int InteractionsID) {
         this.InteractionsID = InteractionsID;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getClients_ID() {
         return Clients_ID;
     }
 
-    /**
-     *
-     * @param Clients_ID
-     */
-    public void setClient_ID(int Clients_ID) {
+    public void setClients_ID(int Clients_ID) {
         this.Clients_ID = Clients_ID;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getDate_Of_Contact() {
         return Date_Of_Contact;
     }
 
-    /**
-     *
-     * @param Date_Of_Contact
-     */
     public void setDate_Of_Contact(String Date_Of_Contact) {
         this.Date_Of_Contact = Date_Of_Contact;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getContact_Name() {
         return Contact_Name;
     }
 
-    /**
-     *
-     * @param Contact_Name
-     */
     public void setContact_Name(String Contact_Name) {
         this.Contact_Name = Contact_Name;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getContact_Type() {
         return Contact_Type;
     }
 
-    /**
-     *
-     * @param Contact_Type
-     */
     public void setContact_Type(String Contact_Type) {
         this.Contact_Type = Contact_Type;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getConversations() {
         return Conversations;
     }
 
-    /**
-     *
-     * @param Conversations
-     */
     public void setConversations(String Conversations) {
         this.Conversations = Conversations;
     }
 
-    /**
-     *
-     * @return
-     */
+    public Clients getClients() {
+        return clients;
+    }
+
+    public void setClients(Clients clients) {
+        this.clients = clients;
+    }
+
+    public Map<Integer, String> getClient() {
+        return client;
+    }
+
+    public void setClient(Map<Integer, String> client) {
+        this.client = client;
+    }
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("Interactions ID: " + this.InteractionsID + ";");

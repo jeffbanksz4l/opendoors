@@ -20,7 +20,6 @@ public class Message implements Serializable {
          *
          */
         ERROR,
-
         /**
          *
          */

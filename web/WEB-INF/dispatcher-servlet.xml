@@ -14,10 +14,15 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
        
     <context:component-scan base-package="opendoors.web"></context:component-scan>
+    <context:component-scan base-package="opendoors.validation"></context:component-scan>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
+    </bean>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/messages" />
     </bean>
   
     <mvc:resources mapping="/media/**" location="/media/" cache-period="10000" />
@@ -28,7 +33,11 @@
         <property name="dataSource" ref="ds"></property>
     </bean>
   
-    <bean id="dao" class="opendoors.repository.ClientsDAO">
+    <bean id="clientsDAO" class="opendoors.repository.ClientsDAO">
         <property name="template" ref="jt"></property>
-    </bean>    
+    </bean>
+    
+    <bean id="interactionsDAO" class="opendoors.repository.InteractionsDAO">
+        <property name="template" ref="jt"></property>
+    </bean>
 </beans>

@@ -21,7 +21,7 @@
         <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidenav"><br>
             <div class="w3-container w3-row">
                 <div class="w3-col s4">
-                    <img src="<c:url value="/media/img/avatar.png" />" class="w3-circle w3-margin-right" style="width:46px">
+                    <img src="<c:url value="/media/img/LionOfJudah.jpg" />" class="w3-circle w3-margin-right" style="width:46px">
                 </div>
                 <div class="w3-col s8">
                     <sec:authorize access="hasRole('ROLE_USER')">
@@ -48,6 +48,20 @@
                         <a class="w3-padding w3-dark-grey" href="<c:url value="/clients/clientsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Client/Prospect</a>
                     </div>
                 </div>
+                <div class="w3-dropdown-hover">
+                    <a href="<c:url value="/interactions/viewinteractions" />" class="w3-padding w3-blue"><i class="fa fa-comments fa-fw"></i>  Interactions  <i class="fa fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-white w3-card-4">
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Interaction</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover">
+                    <a href="<c:url value="/users/viewusers" />" class="w3-padding w3-blue"><i class="fa fa-user-plus fa-fw"></i>  Users  <i class="fa fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-white w3-card-4">
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User</a>
+                    </div>
+                </div>
+
+
             </sec:authorize>
 
             <!--

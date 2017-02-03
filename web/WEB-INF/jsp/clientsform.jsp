@@ -4,14 +4,14 @@
 <%@ include file="header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Clients/Prospects > Add Clients/Prospects</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Clients/Prospects > Add Client/Prospect</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
     <div class="w3-card-4">
         <div class="w3-container w3-blue">
-            <h2>OpenDoors</h2>
+            <h2>Clients/Prospects Information</h2>
         </div>
 
         <form:form method="post" action="save" cssClass="w3-container">
