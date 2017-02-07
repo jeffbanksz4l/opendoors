@@ -12,9 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import opendoors.objects.Clients;
 import opendoors.objects.Message;
 import opendoors.repository.ClientsDAO;
+import opendoors.validation.ClientsValidator;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -26,25 +31,22 @@ public class ClientsController {
     @Autowired
     ClientsDAO dao;
 
+    @Autowired
+    private ClientsValidator clientsValidator;
+
     private static final Logger logger = Logger.getLogger(ClientsController.class.getName());
 
-    /**
-     *
-     * @return
-     */
     @RequestMapping("/clients/clientsform")
     public ModelAndView showform() {
-        return new ModelAndView("clientsform", "command", new Clients());
+        return new ModelAndView("clientsform", "clients", new Clients());
     }
 
-    /**
-     *
-     * @param clients
-     * @param request
-     * @return
-     */
     @RequestMapping(value = "/clients/save", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("clients") Clients clients, HttpServletRequest request) {
+    public ModelAndView save(@ModelAttribute("clients") @Valid Clients clients, BindingResult result, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return new ModelAndView("clientsform", "clients", clients);
+        }
+
         int r = dao.save(clients);
 
         Message msg = null;
@@ -59,22 +61,11 @@ public class ClientsController {
         return new ModelAndView("redirect:/clients/viewclients");
     }
 
-    /**
-     *
-     * @param request
-     * @return
-     */
     @RequestMapping("/clients/viewclients")
     public ModelAndView viewclients(HttpServletRequest request) {
         return this.viewclients(1, request);
     }
 
-    /**
-     *
-     * @param pageid
-     * @param request
-     * @return
-     */
     @RequestMapping("/clients/viewclients/{pageid}")
     public ModelAndView viewclients(@PathVariable int pageid, HttpServletRequest request) {
         int total = 25;
@@ -104,25 +95,18 @@ public class ClientsController {
         return new ModelAndView("viewclients", context);
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     @RequestMapping(value = "/clients/editclients/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Clients clients = dao.getClientsById(id);
-        return new ModelAndView("clientseditform", "command", clients);
+        return new ModelAndView("clientseditform", "clients", clients);
     }
 
-    /**
-     *
-     * @param clients
-     * @param request
-     * @return
-     */
     @RequestMapping(value = "/clients/editsave", method = RequestMethod.POST)
-    public ModelAndView editsave(@ModelAttribute("clients") Clients clients, HttpServletRequest request) {
+    public ModelAndView editsave(@ModelAttribute("clients") @Valid Clients clients, BindingResult result, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return new ModelAndView("clientseditform", "clients", clients);
+        }
+
         int r = dao.update(clients);
 
         Message msg = null;
@@ -137,12 +121,6 @@ public class ClientsController {
         return new ModelAndView("redirect:/clients/viewclients");
     }
 
-    /**
-     *
-     * @param id
-     * @param request
-     * @return
-     */
     @RequestMapping(value = "/clients/deleteclients/{id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
         int r = dao.delete(id);
@@ -157,5 +135,18 @@ public class ClientsController {
         request.getSession().setAttribute("message", msg);
 
         return new ModelAndView("redirect:/clients/viewclients");
+    }
+
+    @InitBinder("clients")
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(clientsValidator);
+    }
+
+    public ClientsValidator getClientsValidator() {
+        return clientsValidator;
+    }
+
+    public void setClientsValidator(ClientsValidator clientsValidator) {
+        this.clientsValidator = clientsValidator;
     }
 }
