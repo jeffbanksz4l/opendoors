@@ -40,4 +40,8 @@
     <bean id="interactionsDAO" class="opendoors.repository.InteractionsDAO">
         <property name="template" ref="jt"></property>
     </bean>
+    
+    <bean id="usersdao" class="opendoors.repository.UsersDAO">
+        <property name="template" ref="jt"></property>
+    </bean>
 </beans>

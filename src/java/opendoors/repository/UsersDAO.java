@@ -121,7 +121,7 @@ public class UsersDAO {
      * @return
      */
     public int getUsersCount() {
-        String sql = "SELECT COUNT(Users) AS rowcount FROM Users";
+        String sql = "SELECT COUNT(Username) AS rowcount FROM Users";
         SqlRowSet rs = template.queryForRowSet(sql);
 
         if (rs.next()) {

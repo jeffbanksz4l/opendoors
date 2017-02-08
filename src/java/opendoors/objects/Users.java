@@ -40,7 +40,7 @@ public class Users implements Serializable {
         StringBuffer buffer = new StringBuffer();
         buffer.append("Username: " + this.Username + ";");
         buffer.append("Password: " + this.Password + ";");
-        buffer.append("Enabled: " + this.Enabled + ";");
+        buffer.append("Enabled: " + this.Enabled);
         return buffer.toString();
     }
 }
