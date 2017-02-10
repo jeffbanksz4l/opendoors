@@ -44,6 +44,9 @@ public class ClientsController {
     @RequestMapping(value = "/clients/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("clients") @Valid Clients clients, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
+            
+            logger.info(result.getFieldErrors().toString());
+            
             return new ModelAndView("clientsform", "clients", clients);
         }
 

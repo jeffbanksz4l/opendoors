@@ -38,7 +38,7 @@ public class InteractionsController {
         Interactions interactions = new Interactions();
         interactions.setClient(dao.getClientsMap());
 
-        return new ModelAndView("interactionsform", "command", interactions);
+        return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
     @RequestMapping("/interactions/interactionsform/{id}")
@@ -51,7 +51,7 @@ public class InteractionsController {
 
         interactions.setClient(dao.getClientsMap());
 
-        return new ModelAndView("interactionsform", "command", interactions);
+        return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
     @RequestMapping(value = "/interactions/save", method = RequestMethod.POST)
@@ -111,7 +111,7 @@ public class InteractionsController {
 
         interactions.setClient(dao.getClientsMap());
 
-        return new ModelAndView("interactionseditform", "command", interactions);
+        return new ModelAndView("interactionseditform", "interactions", interactions);
     }
 
     @RequestMapping(value = "/interactions/editsave", method = RequestMethod.POST)

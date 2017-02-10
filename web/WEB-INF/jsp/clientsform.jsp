@@ -14,7 +14,7 @@
             <h2>Clients/Prospects Information</h2>
         </div>
 
-        <form:form method="post" action="save" cssClass="w3-container">
+        <form:form method="post" action="save" cssClass="w3-container" commandName="clients">
             <div class="w3-padding-8">
                 <!--<label><b>Name</b></label> -->
                 <form:input path="First_Name" cssClass="w3-input w3-border" placeholder="First Name"  />
@@ -24,11 +24,13 @@
                 <form:input path="Address_Line_3" cssClass="w3-input w3-border" placeholder="Address Line 3"  />
                 <form:input path="City" cssClass="w3-input w3-border" placeholder="City"  />
                 <form:input path="State" cssClass="w3-input w3-border" placeholder="State"  />
+                <form:errors path="State" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Postal_Code" cssClass="w3-input w3-border" placeholder="Postal Code"  />
                 <form:input path="Email" cssClass="w3-input w3-border" placeholder="Email"  />
                 <form:input path="Phone_1" cssClass="w3-input w3-border" placeholder="Phone 1"  />
                 <form:input path="Phone_2" cssClass="w3-input w3-border" placeholder="Phone 2"  />
                 <form:input path="Status" cssClass="w3-input w3-border" placeholder="Status"  />
+                <form:errors path="Status" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
             </div>
 
             <div class="w3-padding-8">

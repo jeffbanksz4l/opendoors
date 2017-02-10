@@ -31,7 +31,7 @@ public class InteractionsValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Conversations", "interaction.Conversations.required");
 
         Interactions interactions = (Interactions) target;
-        if (interactions.getDate_Of_Contact().matches("^[A-Za-z0-9]*$")) {
+        if (interactions.getDate_Of_Contact().matches("^(((((((0?[13578])|(1[02]))[\\.\\-/]?((0?[1-9])|([12]\\d)|(3[01])))|(((0?[469])|(11))[\\.\\-/]?((0?[1-9])|([12]\\d)|(30)))|((0?2)[\\.\\-/]?((0?[1-9])|(1\\d)|(2[0-8]))))[\\.\\-/]?(((19)|(20))?([\\d][\\d]))))|((0?2)[\\.\\-/]?(29)[\\.\\-/]?(((19)|(20))?(([02468][048])|([13579][26])))))$")) {
             errors.rejectValue("Date_Of_Contact", "interactions.Date_Of_Contact.pattern");
         }
     }

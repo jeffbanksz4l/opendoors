@@ -14,29 +14,29 @@
             <h2>Interaction Information</h2>
         </div>
 
-        <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container">
+        <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
                 <label><b>Interactions</b></label>
-                <form:input path="title" cssClass="w3-input w3-border" />
+                <form:input path="InteractionsID" cssClass="w3-input w3-border" />
             </div>
 
             <c:choose>
-                <c:when test="${not empty command.clients}">
-                    <form:hidden path="clientsID" />
+                <c:when test="${not empty command.interactions}">
+                    <form:hidden path="Clients_ID" />
                     <div class="w3-padding-8">
-                        <label><b>Clients/Prospects</b></label>
+                        <label><b>Interactions</b></label>
                         <div class="w3-panel w3-border">
-                            <p><b>${command.clients.name}</b></p>
+                            <p><b>${command.interactions.name}</b></p>
                         </div>
                     </div>
                 </c:when>
 
                 <c:otherwise>
                     <div class="w3-padding-8">
-                        <label><b>Clients</b></label>
-                        <form:select path="clientsID" cssClass="w3-select w3-border">
-                            <form:option value="-1">Select Client/Prospects</form:option>
-                            <form:options items="${command.clients}" />
+                        <label><b>Interactions</b></label>
+                        <form:select path="InteractionsID" cssClass="w3-select w3-border">
+                            <form:option value="-1">Select Interactions</form:option>
+                            <form:options items="${command.interactions}" />
                         </form:select>
                     </div>
                 </c:otherwise>

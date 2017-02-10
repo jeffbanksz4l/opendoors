@@ -15,7 +15,7 @@
         </div>
 
         <form:form method="POST" action="/OpenDoors/users/editsave" cssClass="w3-container" commandName="users">
-            <form:hidden path="user_Role_ID"  />
+            <form:hidden path="username"  />
 
             <div class="w3-padding-8">
                 <!--<label><b>Name</b></label> -->

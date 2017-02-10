@@ -14,7 +14,7 @@
             <h2>Interactions</h2>
         </div>
 
-        <form:form method="POST" action="/OpenDoors/interactions/editsave" cssClass="w3-container">
+        <form:form method="POST" action="/OpenDoors/interactions/editsave" cssClass="w3-container" commandName="interactions">
             <form:hidden path="id" />
 
             <div class="w3-padding-8">
@@ -23,8 +23,8 @@
             </div>
 
             <div class="w3-padding-8">
-                <label><b>Clients/Prospects</b></label>
-                <form:select path="interactionsID" cssClass="w3-select w3-border" items="${command.clients}" />
+                <label><b>Interactions</b></label>
+                <form:select path="interactionsID" cssClass="w3-select w3-border" items="${command.interactions}" />
             </div>
 
             <div class="w3-padding-8">

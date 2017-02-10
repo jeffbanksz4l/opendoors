@@ -57,7 +57,7 @@
                 <div class="w3-dropdown-hover">
                     <a href="<c:url value="/users/viewusers" />" class="w3-padding w3-blue"><i class="fa fa-user-plus fa-fw"></i>  Users  <i class="fa fa-caret-down"></i></a>
                     <div class="w3-dropdown-content w3-white w3-card-4">
-                        <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User</a>
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/users/usersform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User</a>
                     </div>
                 </div>
 

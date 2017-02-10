@@ -78,7 +78,7 @@ public class InteractionsDAO {
     public List<Interactions> getInteractionsByPage(int start, int total) {
         String sql = "SELECT interactions.Clients_ID, interactions.Date_Of_Contact, clients.ClientsID, clients.First_Name "
                 + "FROM Interactions AS interactions "
-                + "INNER JOIN Clients AS clients ON clients.ClientsID = interaction.Clients_ID"
+                + "INNER JOIN Clients AS clients ON clients.ClientsID = interactions.Clients_ID "
                 + "ORDER BY clients.First_Name, interactions.Date_Of_Contact "
                 + "LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Interactions>() {
@@ -91,7 +91,7 @@ public class InteractionsDAO {
                 clients.setClientsID(rs.getInt(3));
                 clients.setFirst_Name(rs.getString(4));
 
-                i.setClients(clients);;
+                i.setClients(clients);
                 return i;
             }
         });
