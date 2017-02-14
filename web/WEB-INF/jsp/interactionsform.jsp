@@ -16,27 +16,40 @@
 
         <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
-                <label><b>Interactions</b></label>
-                <form:input path="InteractionsID" cssClass="w3-input w3-border" />
+                <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
+                <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+            </div>
+            <div class="w3-padding-8">
+                <form:input path="Contact_Last_Name" cssClass="w3-input w3-border" placeholder="Contact Last Name"  />
+                <form:errors path="Contact_Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+            </div>
+            <div class="w3-padding-8">
+                <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
+                <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                
+                <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
+                <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                
+                <form:input path="Conversations" cssClass="w3-input w3-border" placeholder="Conversations"  />
+                <form:errors path="Conversations" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
             </div>
 
             <c:choose>
                 <c:when test="${not empty command.interactions}">
-                    <form:hidden path="Clients_ID" />
+                    <form:hidden path="InteractionsID" />
                     <div class="w3-padding-8">
-                        <label><b>Interactions</b></label>
+                        <label><b>Interactions456</b></label>
                         <div class="w3-panel w3-border">
-                            <p><b>${command.interactions.name}</b></p>
+                            <p><b>${command.interactions.first_name}</b></p>
                         </div>
                     </div>
                 </c:when>
 
                 <c:otherwise>
                     <div class="w3-padding-8">
-                        <label><b>Interactions</b></label>
-                        <form:select path="InteractionsID" cssClass="w3-select w3-border">
-                            <form:option value="-1">Select Interactions</form:option>
-                            <form:options items="${command.interactions}" />
+                        <form:select path="Contact_First_Name" cssClass="w3-select w3-border">
+                            <form:option value="-1">Select Contact Type</form:option>
+                            <form:options items="${command.contact_Type}" />
                         </form:select>
                     </div>
                 </c:otherwise>

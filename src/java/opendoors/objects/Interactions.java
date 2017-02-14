@@ -12,7 +12,8 @@ public class Interactions implements Serializable {
     private int InteractionsID;
     private int Clients_ID;
     private String Date_Of_Contact;
-    private String Contact_Name;
+    private String Contact_First_Name;
+    private String Contact_Last_Name;
     private String Contact_Type;
     private String Conversations;
 
@@ -43,12 +44,20 @@ public class Interactions implements Serializable {
         this.Date_Of_Contact = Date_Of_Contact;
     }
 
-    public String getContact_Name() {
-        return Contact_Name;
+    public String getContact_First_Name() {
+        return Contact_First_Name;
     }
 
-    public void setContact_Name(String Contact_Name) {
-        this.Contact_Name = Contact_Name;
+    public void setContact_First_Name(String Contact_First_Name) {
+        this.Contact_First_Name = Contact_First_Name;
+    }
+
+    public String getContact_Last_Name() {
+        return Contact_Last_Name;
+    }
+
+    public void setContact_Last_Name(String Contact_Last_Name) {
+        this.Contact_Last_Name = Contact_Last_Name;
     }
 
     public String getContact_Type() {
@@ -88,7 +97,8 @@ public class Interactions implements Serializable {
         buffer.append("Interactions ID: " + this.InteractionsID + ";");
         buffer.append("Clients ID: " + this.Clients_ID + ";");
         buffer.append("Date Of Contact: " + this.Date_Of_Contact + ";");
-        buffer.append("Contact Name: " + this.Contact_Name + ";");
+        buffer.append("Contact Name: " + this.Contact_First_Name + ";");
+        buffer.append("Contact Name: " + this.Contact_Last_Name + ";");
         buffer.append("Contact Type: " + this.Contact_Type + ";");
         buffer.append("Conversations: " + this.Conversations);
         return buffer.toString();

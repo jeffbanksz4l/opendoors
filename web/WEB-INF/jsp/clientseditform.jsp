@@ -26,7 +26,9 @@
                 <form:input path="Address_Line_1" cssClass="w3-input w3-border" placeholder="Address Line 1"  />
                 <form:errors path="Address_Line_1" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_2" cssClass="w3-input w3-border" placeholder="Address Line 2"  />
+                <form:errors path="Address_Line_2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_3" cssClass="w3-input w3-border" placeholder="Address Line 3"  />
+                <form:errors path="Address_Line_3" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="City" cssClass="w3-input w3-border" placeholder="City"  />
                 <form:errors path="City" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="State" cssClass="w3-input w3-border" placeholder="State"  />
@@ -34,8 +36,11 @@
                 <form:input path="Postal_Code" cssClass="w3-input w3-border" placeholder="Postal Code"  />
                 <form:errors path="Postal_Code" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Email" cssClass="w3-input w3-border" placeholder="Email"  />
+                <form:errors path="Email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Phone_1" cssClass="w3-input w3-border" placeholder="Phone 1"  />
+                <form:errors path="Phone_1" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Phone_2" cssClass="w3-input w3-border" placeholder="Phone 2"  />
+                <form:errors path="Phone_2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Status" cssClass="w3-input w3-border" placeholder="Status"  />
                 <form:errors path="Status" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 </div>

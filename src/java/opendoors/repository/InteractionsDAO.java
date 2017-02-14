@@ -31,9 +31,9 @@ public class InteractionsDAO {
     }
 
     public int save(Interactions interactions) {
-        String sql = "INSERT INTO Interactions (Clients_ID, Date_Of_Contact, Contact_Name, Contact_Type, Conversations) values (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Interactions (Clients_ID, Date_Of_Contact, Contact_First_Name, Contact_First_Name, Contact_Type, Conversations) values (?, ?, ?, ?, ?, ?)";
 
-        Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(), interactions.getContact_Name(), interactions.getContact_Type(), interactions.getConversations()};
+        Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(), interactions.getContact_First_Name(), interactions.getContact_Last_Name(), interactions.getContact_Type(), interactions.getConversations()};
 
         logger.info("Interactions DAO save values: " + values);
 
@@ -41,9 +41,9 @@ public class InteractionsDAO {
     }
 
     public int update(Interactions interactions) {
-        String sql = "UPDATE Interactions SET Clients_ID = ?, Date_Of_Contact = ?, Contact_Name = ?, Contact_Type = ?, Conversations = ? WHERE InteractionsID = ?";
+        String sql = "UPDATE Interactions SET Clients_ID = ?, Date_Of_Contact = ?, Contact_First_Name = ?, Contact_Last_Name = ?, Contact_Type = ?, Conversations = ? WHERE InteractionsID = ?";
 
-        Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(), interactions.getContact_Name(), interactions.getContact_Type(), interactions.getConversations()};
+        Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(), interactions.getContact_First_Name(), interactions.getContact_Last_Name(), interactions.getContact_Type(), interactions.getConversations()};
 
         return template.update(sql, values);
     }
@@ -62,7 +62,8 @@ public class InteractionsDAO {
                 Interactions i = new Interactions();
                 i.setClients_ID(rs.getInt("Clients ID"));
                 i.setDate_Of_Contact(rs.getString("Date Of Contact"));
-                i.setContact_Name(rs.getString("Contact Name"));
+                i.setContact_First_Name(rs.getString("Contact First Name"));
+                i.setContact_Last_Name(rs.getString("Contact Last Name"));
                 i.setContact_Type(rs.getString("Contact Type"));
                 i.setConversations(rs.getString("Conversations"));
                 return i;
@@ -71,7 +72,7 @@ public class InteractionsDAO {
     }
 
     public Interactions getInteractionsById(int id) {
-        String sql = "SELECT InteractionsID AS id, Clients_ID, Date_Of_Contact, Contact_Name, Contact_Type, Conversations FROM Interactions WHERE InteractionsID = ?";
+        String sql = "SELECT InteractionsID AS id, Clients_ID, Date_Of_Contact, Contact_First_Name, Contact_Last_Name, Contact_Type, Conversations FROM Interactions WHERE InteractionsID = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Interactions>(Interactions.class));
     }
 

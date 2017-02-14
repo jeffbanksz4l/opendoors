@@ -16,26 +16,42 @@
 
         <form:form method="post" action="save" cssClass="w3-container" commandName="clients">
             <div class="w3-padding-8">
-                <!--<label><b>Name</b></label> -->
                 <form:input path="First_Name" cssClass="w3-input w3-border" placeholder="First Name"  />
+                <form:errors path="First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Last_Name" cssClass="w3-input w3-border" placeholder="Last Name"  />
+                <form:errors path="Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_1" cssClass="w3-input w3-border" placeholder="Address Line 1"  />
+                <form:errors path="Address_Line_1" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_2" cssClass="w3-input w3-border" placeholder="Address Line 2"  />
+                <form:errors path="Address_Line_2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_3" cssClass="w3-input w3-border" placeholder="Address Line 3"  />
+                <form:errors path="Address_Line_3" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="City" cssClass="w3-input w3-border" placeholder="City"  />
+                <form:errors path="City" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="State" cssClass="w3-input w3-border" placeholder="State"  />
                 <form:errors path="State" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Postal_Code" cssClass="w3-input w3-border" placeholder="Postal Code"  />
+                <form:errors path="Postal_Code" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Email" cssClass="w3-input w3-border" placeholder="Email"  />
+                <form:errors path="Email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Phone_1" cssClass="w3-input w3-border" placeholder="Phone 1"  />
+                <form:errors path="Phone_1" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Phone_2" cssClass="w3-input w3-border" placeholder="Phone 2"  />
-                <form:input path="Status" cssClass="w3-input w3-border" placeholder="Status"  />
-                <form:errors path="Status" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-            </div>
+                <form:errors path="Phone_2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                <form:select path="Status" cssClass="w3-blue w3-padding-8 w3-panel" cssStyle="w3-select w3-border;">
+                    
+                    <form:options items="${clients.statusMap}" />                    
+                </form:select>
 
-            <div class="w3-padding-8">
-                <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
-            </div>
+
+                <!-- <form:input path="Status" cssClass="w3-input w3-border" placeholder="Status"  />
+                <form:errors path="Status" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors> 
+                    -->
+                </div>
+
+                <div class="w3-padding-8">
+                    <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+                </div>
         </form:form>
     </div>
 

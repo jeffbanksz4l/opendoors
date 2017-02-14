@@ -26,7 +26,8 @@
             <th>Interactions ID</th>
             <th>Clients ID</th>
             <th>Date Of Contact</th>
-            <th>Contact Name</th>
+            <th>Contact First Name</th>
+            <th>Contact Last Name</th>
             <th>Contact Type</th>
             <th>Conversations</th>
         </tr>  
@@ -36,7 +37,8 @@
                 <td>${interactions.interactionsID}</td>
                 <td>${interactions.clients_ID}</td>
                 <td>${interactions.date_Of_Contact}</td>
-                <td>${interactions.contact_Name}</td>
+                <td>${interactions.contact_First_Name}</td>
+                <td>${interactions.contact_Last_Name}</td>
                 <td>${interactions.contact_Type}</td>
                 <td>${interactions.conversations}</td>
                 <td>

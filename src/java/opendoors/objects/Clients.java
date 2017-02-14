@@ -1,6 +1,8 @@
 package opendoors.objects;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,10 +23,18 @@ public class Clients implements Serializable {
     private String Email;
     private String Phone_1;
     private String Phone_2;
-    private String Status;
+    private List<String> Status;
+    private Map<String, String> StatusMap;
 
     private Interactions interactions;
     private Map<Integer, String> interaction;
+
+    public Clients() {
+        this.StatusMap = new LinkedHashMap<String, String>();
+        this.StatusMap.put("Prospect", "Prospect");
+        this.StatusMap.put("Client", "Client");
+        this.StatusMap.put("Inactive", "Inactive");
+    }
 
     public int getClientsID() {
         return ClientsID;
@@ -122,12 +132,16 @@ public class Clients implements Serializable {
         this.Phone_2 = Phone_2;
     }
 
-    public String getStatus() {
+    public List<String> getStatus() {
         return Status;
     }
 
-    public void setStatus(String Status) {
+    public void setStatus(List<String> Status) {
         this.Status = Status;
+    }
+
+    public Map<String, String> getStatusMap() {
+        return StatusMap;
     }
 
     public Interactions getInteractions() {
@@ -160,7 +174,7 @@ public class Clients implements Serializable {
         buffer.append("Email: " + this.Email + ";");
         buffer.append("Phone 1: " + this.Phone_1 + ";");
         buffer.append("Phone 2: " + this.Phone_2 + ";");
-        buffer.append("Status: " + this.Status);
+//        buffer.append("Status: " + this.Status);
         return buffer.toString();
     }
 }
