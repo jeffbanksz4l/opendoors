@@ -35,9 +35,9 @@
                 <td>${clients.first_Name}</td>  
                 <td>${clients.last_Name}</td>  
                 <td>
-                    <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/clients/deleteclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
-                    <a href="<c:url value="/interactions/interactionsform/${clients.clientsID}" />"><button class="w3-btn w3-round w3-blue">Add Interaction</button></a>
+                    <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-pink">Edit</button></a>
+                    <a href="<c:url value="/clients/deleteclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-cyan">Delete</button></a>
+                    <a href="<c:url value="/interactions/interactionsform/${clients.clientsID}" />"><button class="w3-btn w3-round w3-gray">Add Interaction</button></a>
                 </td>  
             </tr>  
         </c:forEach>  

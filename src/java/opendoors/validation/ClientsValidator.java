@@ -59,7 +59,7 @@ public class ClientsValidator implements Validator {
         }
 
         if (!clients.getAddress_Line_2().isEmpty()) {
-            if (clients.getAddress_Line_2().length() > 7) {
+            if (clients.getAddress_Line_2().length() > 70) {
                 errors.rejectValue("Address_Line_2", "clients.Address_Line_2.length", "default");
             }
             if (!clients.getAddress_Line_2().matches("^[A-Za-z0-9]*$")) {
@@ -68,7 +68,7 @@ public class ClientsValidator implements Validator {
         }
 
         if (!clients.getAddress_Line_3().isEmpty()) {
-            if (clients.getAddress_Line_3().length() > 7) {
+            if (clients.getAddress_Line_3().length() > 70) {
                 errors.rejectValue("Address_Line_3", "clients.Address_Line_3.length", "default");
             }
         }
@@ -87,11 +87,11 @@ public class ClientsValidator implements Validator {
             errors.rejectValue("City", "clients.City.pattern", "default");
         }
 
-        if (clients.getState().length() != 2) {
-            errors.rejectValue("State", "clients.State.length", "default");
-        }
+//        if (clients.getState().length() != 2) {
+//            errors.rejectValue("State", "clients.State.length", "default");
+//        }
 
-        if (!clients.getState().matches("^[A-Za-z]*$")) {
+        if (!clients.getState().matches("^[A-Za-z- ]*$")) {
             errors.rejectValue("State", "clients.State.pattern", "default");
         }
 

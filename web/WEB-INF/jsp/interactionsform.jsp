@@ -16,23 +16,29 @@
 
         <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
+                <form:input path="Date_Of_Contact" cssClass="w3-input w3-border" placeholder="Date Of Contact"  />
+                <form:errors path="Date_Of_Contact" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                </div>
+
+                <div class="w3-padding-8">
                 <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
                 <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-            </div>
-            <div class="w3-padding-8">
+                </div>
+
+                <div class="w3-padding-8">
                 <form:input path="Contact_Last_Name" cssClass="w3-input w3-border" placeholder="Contact Last Name"  />
                 <form:errors path="Contact_Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-            </div>
-            <div class="w3-padding-8">
-                <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
-                <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                
-                <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
-                <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                
+                </div>
+
+                <div class="w3-padding-8">
+                <form:input path="Contact_Type" cssClass="w3-input w3-border" placeholder="Contact Type"  />
+                <form:errors path="Contact_Type" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                </div>
+
+                <div class="w3-padding-8">
                 <form:input path="Conversations" cssClass="w3-input w3-border" placeholder="Conversations"  />
                 <form:errors path="Conversations" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-            </div>
+                </div>
 
             <c:choose>
                 <c:when test="${not empty command.interactions}">

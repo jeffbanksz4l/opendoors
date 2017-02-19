@@ -23,10 +23,11 @@
                 <form:errors path="Username" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Password" cssClass="w3-input w3-border" placeholder="Password"  />
                 <form:errors path="Password" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                <form:input path="Enabled" cssClass="w3-input w3-border" placeholder="Enabled"  />
-                <form:errors path="Enabled" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                <form:input path="Role" cssClass="w3-input w3-border" placeholder="Role"  />
-                <form:errors path="Role" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                
+                <form:checkbox path="Enabled" cssClass="w3-input w3-border" placeholder="Enabled"  />
+                
+                <form:input path="Roles" cssClass="w3-input w3-border" placeholder="Role"  />
+                <form:errors path="Roles" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 </div>
 
                 <div class="w3-padding-8">

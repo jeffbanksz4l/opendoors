@@ -40,8 +40,22 @@ public class UsersDAO {
         String sql = "INSERT INTO Users (Username, Password, Enabled) values (?, md5(?), ?)";
 
         Object[] values = {users.getUsername(), users.getPassword(), users.getEnabled()};
+        
+        logger.info("Users DAO save values: " + values);
+        
+        int r = template.update(sql, values);
+        
+        sql = "INSERT INTO User_Roles (Username, Role) VALUES (?, ?)";
+        
+        for (String role: users.getRoles()) {
+            Object[] role_values = {users.getUsername(), role};
+            
+            logger.info("Users DAO add role: " + values);
+            
+            template.update(sql, role_values);
+        }
 
-        return template.update(sql, values);
+        return r;
     }
 
     /**
@@ -80,7 +94,8 @@ public class UsersDAO {
                 Users u = new Users();
                 u.setUsername(rs.getString("Username"));
                 u.setPassword(rs.getString("Password"));
-                u.setEnabled(rs.getString("Enabled"));
+                u.setEnabled();
+//                u.setEnabled(rs.getString("Enabled"));
                 return u;
             }
         });
@@ -110,7 +125,8 @@ public class UsersDAO {
                 Users u = new Users();
                 u.setUsername(rs.getString(1));
                 u.setPassword(rs.getString(2));
-                u.setEnabled(rs.getString(3));
+                u.setEnabled();
+//                u.setEnabled(rs.getString(3));
                 return u;
             }
         });

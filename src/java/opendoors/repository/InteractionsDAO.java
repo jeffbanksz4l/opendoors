@@ -110,15 +110,15 @@ public class InteractionsDAO {
     }
 
     public Map<Integer, String> getClientsMap() {
-        Map<Integer, String> clients = new LinkedHashMap<Integer, String>();
+        Map<Integer, String> Clients = new LinkedHashMap<Integer, String>();
         String sql = "SELECT ClientsID, First_Name FROM Clients ORDER BY First_Name";
 
         SqlRowSet rs = template.queryForRowSet(sql);
 
         while (rs.next()) {
-            clients.put(rs.getInt(1), rs.getString(2));
+            Clients.put(rs.getInt(1), rs.getString(2));
         }
 
-        return clients;
+        return Clients;
     }
 }

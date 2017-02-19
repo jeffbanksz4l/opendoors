@@ -38,7 +38,7 @@ public class UsersValidator implements Validator {
             errors.rejectValue("Username", "users.Username.pattern");
         }
 
-        if (users.getPassword().length() >= 8 && users.getPassword().length() <= 12) {
+        if (users.getPassword().length() <= 8 && users.getPassword().length() >= 12) {
             errors.rejectValue("Password", "users.Password.length");
         }
 
@@ -46,13 +46,13 @@ public class UsersValidator implements Validator {
             errors.rejectValue("Password", "users.Password.pattern");
         }
 
-        if (users.getEnabled().length() > 1) {
-            errors.rejectValue("Enabled", "users.Enabled.length");
-        }
-
-        if (!users.getEnabled().matches("^[E||U]*$")) {
-            errors.rejectValue("Enabled", "users.Enabled.pattern");
-        }
+//        if (users.getEnabled().length() > 1) {
+//            errors.rejectValue("Enabled", "users.Enabled.length");
+//        }
+//
+//        if (!users.getEnabled().matches("^[E||U]*$")) {
+//            errors.rejectValue("Enabled", "users.Enabled.pattern");
+//        }
     }
 
 }

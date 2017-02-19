@@ -1,6 +1,7 @@
 package opendoors.objects;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -16,6 +17,7 @@ public class Interactions implements Serializable {
     private String Contact_Last_Name;
     private String Contact_Type;
     private String Conversations;
+    private Map<String, String> ConversationsMap;
 
     private Clients clients;
     private Map<Integer, String> client;
@@ -84,8 +86,15 @@ public class Interactions implements Serializable {
         this.clients = clients;
     }
 
-    public Map<Integer, String> getClient() {
-        return client;
+    public Map<String, String> getConversationsMap() {
+
+        this.ConversationsMap = new LinkedHashMap<String, String>();
+        this.ConversationsMap.put("Email", "Email");
+        this.ConversationsMap.put("Phone", "Phone");
+        this.ConversationsMap.put("In Person", "In Person");
+        this.ConversationsMap.put("Other", "Other");
+
+        return ConversationsMap;
     }
 
     public void setClient(Map<Integer, String> client) {
