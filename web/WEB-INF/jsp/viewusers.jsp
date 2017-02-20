@@ -24,18 +24,15 @@
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
             <th>Username</th>
-            <th>Password</th>
             <th>Enabled</th>
         </tr>  
 
         <c:forEach var="users" items="${list}">   
             <tr>  
-                <td>${users.username}</td>  
-                <td>${users.password}</td>  
-                <td>${users.enabled}</td>  
+                <td>${users.username}</td>
+                <td>${users.enabled}</td>
                 <td>
                     <a href="<c:url value="/users/editusers/${users.username}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/users/deleteusers/${users.username}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
                     <a href="<c:url value="/users/usersform/${users.username}" />"><button class="w3-btn w3-round w3-green">Add User</button></a>
                 </td>  
             </tr>  
@@ -49,7 +46,6 @@
                 </c:forEach>
         </ul>
     </div>
-
 </div>
 
 <%@ include file="footer.jsp" %>
