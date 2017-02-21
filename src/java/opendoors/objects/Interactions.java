@@ -17,7 +17,6 @@ public class Interactions implements Serializable {
     private String Contact_Last_Name;
     private String Contact_Type;
     private String Conversations;
-//    private Map<String, String> Contact_TypeMap;
     private Map<String, String> Contact_TypeMap;
 
     private Clients clients;
@@ -87,14 +86,7 @@ public class Interactions implements Serializable {
         this.clients = clients;
     }
 
-//    public Map<String, String> getContact_TypeMap() {
-//        
-//        this.Contact_TypeMap = new LinkedHashMap<String, String>();
-//        this.Contact_TypeMap.put(Contact_Type, Contact_Type)
-//        
-//        return Contact_TypeMap;
-//    }
-    public Map<String, String> Contact_TypeMap() {
+    public Map<String, String> getContact_TypeMap() {
 
         this.Contact_TypeMap = new LinkedHashMap<String, String>();
         this.Contact_TypeMap.put("Email", "Email");
