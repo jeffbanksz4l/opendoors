@@ -16,12 +16,23 @@
 
         <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
+
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <link rel="stylesheet" href="/resources/demos/style.css">
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                <script>
+                    $(function () {
+                        $("#Date_Of_Contact").datepicker();
+                    });
+                </script>
+
                 <form:input path="Date_Of_Contact" cssClass="w3-input w3-border" placeholder="Date Of Contact"  />
                 <form:errors path="Date_Of_Contact" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
 
                 <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />
                 <form:errors path="Contact_First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                
+
                 <form:input path="Contact_Last_Name" cssClass="w3-input w3-border" placeholder="Contact Last Name"  />
                 <form:errors path="Contact_Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
 
@@ -29,7 +40,25 @@
                     <form:options items="${interactions.contact_TypeMap}" />
                 </form:select>
 
-                <form:input path="Conversations" cssClass="w3-input w3-border" placeholder="Conversations"  />
+
+                <form:textarea rows="10" path="Conversations" cssClass="w3-input w3-border" placeholder="Conversations"  />
+
+                <!-- 
+                                <div class="w3-container">
+                                    <h2>Conversations</h2>
+                                    <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-btn">Conversation</button>
+                
+                                    <div id="id01" class="w3-modal">
+                                        <div class="w3-modal-content">
+                                            <div class="w3-container">
+                                                <span onclick="document.getElementById('id01').style.display = 'none'" class="w3-closebtn">&times;</span>
+                                                <p>Some text. Some text. Some text.</p>
+                                                <p>Some text. Some text. Some text.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                -->
                 <form:errors path="Conversations" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 </div>
 
@@ -47,14 +76,14 @@
 
                 <c:otherwise>
                     <div class="w3-padding-8">
-                        <form:select path="Contact_Type" cssClass="w3-select w3-border">
-                            <form:option value="-1">Select Contact Type</form:option>
-                            <form:options items="${command.contact_Type}" />
-                        </form:select>
-                    </div>
+                    <form:select path="Contact_Type" cssClass="w3-select w3-border">
+                        <form:option value="-1">Select Contact Type</form:option>
+                        <form:options items="${command.contact_Type}" />
+                    </form:select>
+                </div>
                 </c:otherwise>
             </c:choose>
-                -->
+            -->
 
             <div class="w3-padding-8">
                 <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>

@@ -1,6 +1,7 @@
 package opendoors.objects;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class Interactions implements Serializable {
 
     private int InteractionsID;
     private int Clients_ID;
-    private String Date_Of_Contact;
+    private Date Date_Of_Contact;
     private String Contact_First_Name;
     private String Contact_Last_Name;
     private String Contact_Type;
@@ -38,11 +39,11 @@ public class Interactions implements Serializable {
         this.Clients_ID = Clients_ID;
     }
 
-    public String getDate_Of_Contact() {
+    public Date getDate_Of_Contact() {
         return Date_Of_Contact;
     }
 
-    public void setDate_Of_Contact(String Date_Of_Contact) {
+    public void setDate_Of_Contact(Date Date_Of_Contact) {
         this.Date_Of_Contact = Date_Of_Contact;
     }
 
