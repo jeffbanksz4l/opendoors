@@ -42,9 +42,9 @@
                 <td>${interactions.contact_Type}</td>
                 <td>${interactions.conversations}</td>
                 <td>
-                    <a href="<c:url value="/interactions/editinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this Interaction?');">Delete</button></a>
-                    <a href="<c:url value="/interactions/interactionsform/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-blue">Add Interaction</button></a>
+                    <a href="<c:url value="/interactions/editinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-brown">Edit</button></a>
+                    <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-cyan" onclick="return confirm('Are you sure you want to delete this Interaction?');">Delete</button></a>
+                    <a href="<c:url value="/interactions/interactionsform/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-gray">Add Interaction</button></a>
                 </td>  
             </tr>  
         </c:forEach>  

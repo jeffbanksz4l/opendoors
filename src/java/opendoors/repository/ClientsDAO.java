@@ -90,7 +90,7 @@ public class ClientsDAO {
                 c.setEmail(rs.getString("Email"));
                 c.setPhone_1(rs.getString("Phone 1"));
                 c.setPhone_2(rs.getString("Phone 2"));
-//                c.setStatus(rs.getString("Status"));
+                c.setStatus(rs.getString("Status"));
                 return c;
             }
         });
@@ -130,7 +130,7 @@ public class ClientsDAO {
                 c.setEmail(rs.getString(10));
                 c.setPhone_1(rs.getString(11));
                 c.setPhone_2(rs.getString(12));
-//                c.setStatus(rs.getString(13));
+                c.setStatus(rs.getString(13));
                 return c;
             }
         });

@@ -62,7 +62,7 @@ public class ClientsValidator implements Validator {
             if (clients.getAddress_Line_2().length() > 70) {
                 errors.rejectValue("Address_Line_2", "clients.Address_Line_2.length", "default");
             }
-            if (!clients.getAddress_Line_2().matches("^[A-Za-z0-9]*$")) {
+            if (!clients.getAddress_Line_2().matches("^[A-Za-z0-9 _.,!\"'/$]*$")) {
                 errors.rejectValue("Address_Line_2", "clients.Address_Line_2.pattern", "default");
             }
         }

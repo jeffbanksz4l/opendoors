@@ -45,6 +45,8 @@ public class InteractionsDAO {
 
         Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(), interactions.getContact_First_Name(), interactions.getContact_Last_Name(), interactions.getContact_Type(), interactions.getConversations()};
 
+        logger.info("Interactions DAO save values: " + values);
+
         return template.update(sql, values);
     }
 
@@ -77,7 +79,7 @@ public class InteractionsDAO {
     }
 
     public List<Interactions> getInteractionsByPage(int start, int total) {
-        String sql = "SELECT interactions.Clients_ID, interactions.Date_Of_Contact, clients.ClientsID, clients.First_Name "
+        String sql = "SELECT interactions.InteractionsID, interactions.Clients_ID, interactions.Date_Of_Contact, interactions.Contact_First_Name, interactions.Contact_Last_Name, interactions.Contact_Type, interactions.Conversations, clients.ClientsID, clients.First_Name, clients.Last_Name "
                 + "FROM Interactions AS interactions "
                 + "INNER JOIN Clients AS clients ON clients.ClientsID = interactions.Clients_ID "
                 + "ORDER BY clients.First_Name, interactions.Date_Of_Contact "
@@ -86,11 +88,16 @@ public class InteractionsDAO {
             public Interactions mapRow(ResultSet rs, int row) throws SQLException {
                 Interactions i = new Interactions();
                 i.setInteractionsID(rs.getInt(1));
-                i.setDate_Of_Contact(rs.getDate(2));
+                i.setClients_ID(rs.getInt(2));
+                i.setDate_Of_Contact(rs.getDate(3));
+                i.setContact_First_Name(rs.getString(4));
+                i.setContact_Last_Name(rs.getString(5));
+                i.setContact_Type(rs.getString(6));
+                i.setConversations(rs.getString(7));
 
                 Clients clients = new Clients();
-                clients.setClientsID(rs.getInt(3));
-                clients.setFirst_Name(rs.getString(4));
+//                clients.setClientsID(rs.getInt(2));
+//                clients.setFirst_Name(rs.getString(4));
 
                 i.setClients(clients);
                 return i;
@@ -111,12 +118,12 @@ public class InteractionsDAO {
 
     public Map<Integer, String> getClientsMap() {
         Map<Integer, String> Clients = new LinkedHashMap<Integer, String>();
-        String sql = "SELECT ClientsID, First_Name FROM Clients ORDER BY First_Name";
+        String sql = "SELECT ClientsID, First_Name, Last_Name FROM Clients ORDER BY First_Name";
 
         SqlRowSet rs = template.queryForRowSet(sql);
 
         while (rs.next()) {
-            Clients.put(rs.getInt(1), rs.getString(2));
+            Clients.put(rs.getInt(1), rs.getString(2) + " " + rs.getString(3));
         }
 
         return Clients;

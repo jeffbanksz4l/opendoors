@@ -21,7 +21,7 @@ public class Interactions implements Serializable {
     private Map<String, String> Contact_TypeMap;
 
     private Clients clients;
-    private Map<Integer, String> client;
+    private Map<Integer, String> clientMap;
 
     public int getInteractionsID() {
         return InteractionsID;
@@ -98,19 +98,19 @@ public class Interactions implements Serializable {
         return Contact_TypeMap;
     }
 
-    public void setClient(Map<Integer, String> client) {
-        this.client = client;
+    public void setClient(Map<Integer, String> clientMap) {
+        this.clientMap = clientMap;
     }
 
     public String toString() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append("Interactions ID: " + this.InteractionsID + ";");
-        buffer.append("Clients ID: " + this.Clients_ID + ";");
-        buffer.append("Date Of Contact: " + this.Date_Of_Contact + ";");
-        buffer.append("Contact Name: " + this.Contact_First_Name + ";");
-        buffer.append("Contact Name: " + this.Contact_Last_Name + ";");
-        buffer.append("Contact Type: " + this.Contact_Type + ";");
-        buffer.append("Conversations: " + this.Conversations);
+//        buffer.append("Interactions ID: " + this.InteractionsID + ";");
+//        buffer.append("Clients ID: " + this.Clients_ID + ";");
+//        buffer.append("Date Of Contact: " + this.Date_Of_Contact + ";");
+//        buffer.append("Contact Name: " + this.Contact_First_Name + ";");
+//        buffer.append("Contact Name: " + this.Contact_Last_Name + ";");
+//        buffer.append("Contact Type: " + this.Contact_Type + ";");
+//        buffer.append("Conversations: " + this.Conversations);
         return buffer.toString();
     }
 }

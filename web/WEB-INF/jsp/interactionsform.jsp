@@ -17,6 +17,28 @@
         <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
 
+                <c:choose>
+                    <c:when test="${not empty interactions.clients}">
+                        <form:hidden path="Clients_ID" />
+                        <div class="w3-padding-8">
+                            <div class="w3-panel w3-border w3-white">
+                                <p>${interactions.clients}</p>
+                                <p>${clients.First_Name}</p>
+                            </div>
+                        </div>
+                    </c:when>
+
+                    <c:otherwise>
+                        <div class="w3-padding-8">
+                            <label><b>Interaction</b></label>
+                            <form:select path="Clients_ID" cssClass="w3-select w3-border">
+                                <form:option value="-1">Select Client</form:option>
+                                <form:options items="${interactions.clients}"  />
+                            </form:select>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+
                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                 <link rel="stylesheet" href="/resources/demos/style.css">
                 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -35,7 +57,7 @@
 
                 <form:input path="Contact_Last_Name" cssClass="w3-input w3-border" placeholder="Contact Last Name"  />
                 <form:errors path="Contact_Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-
+                
                 <form:select path="Contact_Type" cssClass="w3-input w3-border" >
                     <form:options items="${interactions.contact_TypeMap}" />
                 </form:select>

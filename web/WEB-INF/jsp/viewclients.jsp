@@ -26,6 +26,7 @@
             <th>Clients ID</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>  
 
@@ -33,7 +34,8 @@
             <tr>  
                 <td>${clients.clientsID}</td>  
                 <td>${clients.first_Name}</td>  
-                <td>${clients.last_Name}</td>  
+                <td>${clients.last_Name}</td>
+                <td>${clients.status}</td>
                 <td>
                     <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-brown">Edit</button></a>
                     <a href="<c:url value="/clients/deleteclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-cyan" onclick="return confirm('Are you sure you want to delete this Client/Prospect?');" >Delete</button></a>

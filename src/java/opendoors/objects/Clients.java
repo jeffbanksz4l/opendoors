@@ -28,7 +28,7 @@ public class Clients implements Serializable {
     private Map<String, String> StatesMap;
 
     private Interactions interactions;
-    private Map<Integer, String> interaction;
+    private Map<Integer, String> interactionMap;
 
     public int getClientsID() {
         return ClientsID;
@@ -137,9 +137,9 @@ public class Clients implements Serializable {
     public Map<String, String> getStatusMap() {
 
         StatusMap = new LinkedHashMap<String, String>();
-        StatusMap.put("Prospect", "Prospect");
-        StatusMap.put("Client", "Client");
-        StatusMap.put("Inactive", "Inactive");
+        this.StatusMap.put("Prospect", "Prospect");
+        this.StatusMap.put("Client", "Client");
+        this.StatusMap.put("Inactive", "Inactive");
 
         return StatusMap;
     }
@@ -224,28 +224,28 @@ public class Clients implements Serializable {
         this.interactions = interactions;
     }
 
-    public Map<Integer, String> getInteraction() {
-        return interaction;
+    public Map<Integer, String> getInteractionMap() {
+        return interactionMap;
     }
 
-    public void setInteraction(Map<Integer, String> interaction) {
-        this.interaction = interaction;
-    }
-
+//    public void setInteraction(Map<Integer, String> interactionMap) {
+//        this.interactionMap = interactionMap;
+//    }
     public String toString() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append("Clients ID: " + this.ClientsID + ";");
-        buffer.append("First Name: " + this.First_Name + ";");
-        buffer.append("Last Name: " + this.Last_Name + ";");
-        buffer.append("Address Line 1: " + this.Address_Line_1 + ";");
-        buffer.append("Address Line 2: " + this.Address_Line_2 + ";");
-        buffer.append("Address Line 3: " + this.Address_Line_3 + ";");
-        buffer.append("City: " + this.City + ";");
-        buffer.append("State: " + this.State + ";");
-        buffer.append("Postal Code: " + this.Postal_Code + ";");
-        buffer.append("Email: " + this.Email + ";");
-        buffer.append("Phone 1: " + this.Phone_1 + ";");
-        buffer.append("Phone 2: " + this.Phone_2 + ";");
+        buffer.append(this.First_Name + " " + this.Last_Name);
+//        buffer.append("Clients ID: " + this.ClientsID + ";");
+//        buffer.append("First Name: " + this.First_Name + ";");
+//        buffer.append("Last Name: " + this.Last_Name + ";");
+//        buffer.append("Address Line 1: " + this.Address_Line_1 + ";");
+//        buffer.append("Address Line 2: " + this.Address_Line_2 + ";");
+//        buffer.append("Address Line 3: " + this.Address_Line_3 + ";");
+//        buffer.append("City: " + this.City + ";");
+//        buffer.append("State: " + this.State + ";");
+//        buffer.append("Postal Code: " + this.Postal_Code + ";");
+//        buffer.append("Email: " + this.Email + ";");
+//        buffer.append("Phone 1: " + this.Phone_1 + ";");
+//        buffer.append("Phone 2: " + this.Phone_2 + ";");
 //        buffer.append("Status: " + this.Status);
         return buffer.toString();
     }
