@@ -1,5 +1,15 @@
+<!-- Footer -->
+<footer class="w3-container w3-padding-16">
+    <i class="fa fa-github fa-fw w3-large"></i>
+    <i class="fa fa-linkedin-square fa-fw w3-large"></i>
+    <i class="fa fa-envelope-square fa-fw w3-large"></i>
+    <p>Copyright <i class="fa fa-copyright fa-fw"></i> Jeffrey Banks</p>
+</footer>
+
 <!-- End page content -->
 </div>
+
+
 
 <script>
 // Get the Sidenav

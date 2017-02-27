@@ -35,10 +35,17 @@ public class Users implements Serializable {
     }
 
     public Boolean getEnabled() {
-        return Enabled;
+        if (!Enabled) {
+            return Enabled = false;
+        } else {
+            return Enabled;
+        }
     }
 
     public void setEnabled() {
+//        if (!Enabled == true) {
+//            this.Enabled = Enabled;
+//        }
         this.Enabled = Enabled;
     }
 
@@ -62,8 +69,7 @@ public class Users implements Serializable {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("Username: " + this.Username + ";");
-        buffer.append("Password: " + this.Password + ";");
-//        buffer.append("Enabled: " + this.Enabled);
+        buffer.append("Enabled: " + this.Enabled);
         return buffer.toString();
     }
 }

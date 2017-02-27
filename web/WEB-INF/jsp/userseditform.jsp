@@ -15,17 +15,15 @@
         </div>
 
         <form:form method="POST" action="/OpenDoors/users/editsave" cssClass="w3-container" commandName="users">
-            <form:hidden path="username"  />
-
+            <form:hidden path="userName"  />
             <div class="w3-padding-8">
-                <!--<label><b>Name</b></label> -->
                 <form:input path="Username" cssClass="w3-input w3-border" placeholder="Username"  />
                 <form:errors path="Username" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:password path="Password" cssClass="w3-input w3-border" placeholder="Password"  />
                 <form:errors path="Password" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:checkbox path="Enabled" cssClass="w3-check"  />
                 <label>Enabled</label>
-                <form:select path="Roles" cssClass="w3-input w3-border" cssStyle="height:55px;" placeholder="Roles" >                    
+                <form:select path="Roles" cssClass="w3-input w3-border" cssStyle="height:55px;" >                    
                     <form:options items="${users.rolesMap}" />
                 </form:select>
                 Ctrl + click to select multiple items.

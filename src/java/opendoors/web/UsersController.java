@@ -95,9 +95,9 @@ public class UsersController {
         return new ModelAndView("viewusers", context);
     }
 
-    @RequestMapping(value = "/users/editusers/{id}")
-    public ModelAndView edit(@PathVariable int id) {
-        Users users = dao.getUsersById(id);
+    @RequestMapping(value = "/users/editusers/userName")
+    public ModelAndView edit(@PathVariable String userName) {
+        Users users = dao.getUsersByName(userName);
         return new ModelAndView("userseditform", "users", users);
     }
 
@@ -121,21 +121,21 @@ public class UsersController {
         return new ModelAndView("redirect:/users/viewusers");
     }
 
-    @RequestMapping(value = "/users/deleteusers/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
-        int r = dao.delete(id);
-
-        Message msg = null;
-        if (r == 1) {
-            msg = new Message(Message.Level.INFO, "User has been successfully deleted");
-        } else {
-            msg = new Message(Message.Level.ERROR, "Delete user failed");
-        }
-
-        request.getSession().setAttribute("message", msg);
-
-        return new ModelAndView("redirect:/users/viewusers");
-    }
+//    @RequestMapping(value = "/users/deleteusers/{id}", method = RequestMethod.GET)
+//    public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
+//        int r = dao.delete(id);
+//
+//        Message msg = null;
+//        if (r == 1) {
+//            msg = new Message(Message.Level.INFO, "User has been successfully deleted");
+//        } else {
+//            msg = new Message(Message.Level.ERROR, "Delete user failed");
+//        }
+//
+//        request.getSession().setAttribute("message", msg);
+//
+//        return new ModelAndView("redirect:/users/viewusers");
+//    }
 
     @InitBinder("users")
     public void initBinder(WebDataBinder webDataBinder) {

@@ -23,46 +23,32 @@ public class UsersDAO {
 
     private static final Logger logger = Logger.getLogger(UsersDAO.class.getName());
 
-    /**
-     *
-     * @param template
-     */
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
-    /**
-     *
-     * @param users
-     * @return
-     */
     public int save(Users users) {
         String sql = "INSERT INTO Users (Username, Password, Enabled) values (?, md5(?), ?)";
 
         Object[] values = {users.getUsername(), users.getPassword(), users.getEnabled()};
-        
+
         logger.info("Users DAO save values: " + values);
-        
+
         int r = template.update(sql, values);
-        
+
         sql = "INSERT INTO User_Roles (Username, Role) VALUES (?, ?)";
-        
-        for (String role: users.getRoles()) {
+
+        for (String role : users.getRoles()) {
             Object[] role_values = {users.getUsername(), role};
-            
+
             logger.info("Users DAO add role: " + values);
-            
+
             template.update(sql, role_values);
         }
 
         return r;
     }
 
-    /**
-     *
-     * @param users
-     * @return
-     */
     public int update(Users users) {
         String sql = "UPDATE Users SET (Username = ?, Password = md5(?), Enabled = ?) WHERE Username = ?";
 
@@ -71,23 +57,13 @@ public class UsersDAO {
         return template.update(sql, values);
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    public int delete(int id) {
-        String sql = "DELETE FROM Users WHERE Username = ?";
-
-        Object[] values = {id};
-
-        return template.update(sql, values);
-    }
-
-    /**
-     *
-     * @return
-     */
+//    public int delete(int id) {
+//        String sql = "DELETE FROM Users WHERE Username = ?";
+//
+//        Object[] values = {id};
+//
+//        return template.update(sql, values);
+//    }
     public List<Users> getUsersList() {
         return template.query("SELECT * FROM Users", new RowMapper<Users>() {
             public Users mapRow(ResultSet rs, int row) throws SQLException {
@@ -101,30 +77,19 @@ public class UsersDAO {
         });
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    public Users getUsersById(int id) {
-        logger.info("Get Users by ID: " + id);
-        String sql = "SELECT Username AS id, (Username, Password, Enabled) FROM Users WHERE Username = ?";
-        return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Users>(Users.class));
+    public Users getUsersByName(String userName) {
+        logger.info("Get Users by Name: " + userName);
+        String sql = "SELECT Username AS userName, (Username, Password, Enabled) FROM Users WHERE Username = ?";
+        return template.queryForObject(sql, new Object[]{userName}, new BeanPropertyRowMapper<Users>(Users.class));
     }
 
-    /**
-     *
-     * @param start
-     * @param total
-     * @return
-     */
     public List<Users> getUsersByPage(int start, int total) {
         String sql = "SELECT * FROM Users LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Users>() {
             public Users mapRow(ResultSet rs, int row) throws SQLException {
                 Users u = new Users();
                 u.setUsername(rs.getString(1));
-                u.setPassword(rs.getString(2));
+//                u.setPassword(rs.getString(2));
                 u.setEnabled();
 //                u.setEnabled(rs.getString(3));
                 return u;
@@ -132,10 +97,6 @@ public class UsersDAO {
         });
     }
 
-    /**
-     *
-     * @return
-     */
     public int getUsersCount() {
         String sql = "SELECT COUNT(Username) AS rowcount FROM Users";
         SqlRowSet rs = template.queryForRowSet(sql);
