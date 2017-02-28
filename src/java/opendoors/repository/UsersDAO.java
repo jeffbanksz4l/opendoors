@@ -10,6 +10,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import opendoors.objects.Users;
+import opendoors.objects.Clients;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -54,7 +57,21 @@ public class UsersDAO {
 
         Object[] values = {users.getUsername(), users.getPassword(), users.getEnabled()};
 
-        return template.update(sql, values);
+        logger.info("Users DAO save values: " + values);
+
+        int r = template.update(sql, values);
+
+        sql = "UPDATE INTO User_Roles (Username, Role) VALUES (?, ?)";
+
+        for (String role : users.getRoles()) {
+            Object[] role_values = {users.getUsername(), role};
+
+            logger.info("Users DAO update role: " + values);
+
+            return template.update(sql, values);
+        }
+
+        return r;
     }
 
 //    public int delete(int id) {
@@ -70,17 +87,17 @@ public class UsersDAO {
                 Users u = new Users();
                 u.setUsername(rs.getString("Username"));
                 u.setPassword(rs.getString("Password"));
-                u.setEnabled();
+                u.setEnabled(rs.getBoolean("Enabled"));
 //                u.setEnabled(rs.getString("Enabled"));
                 return u;
             }
         });
     }
 
-    public Users getUsersByName(String userName) {
-        logger.info("Get Users by Name: " + userName);
-        String sql = "SELECT Username AS userName, (Username, Password, Enabled) FROM Users WHERE Username = ?";
-        return template.queryForObject(sql, new Object[]{userName}, new BeanPropertyRowMapper<Users>(Users.class));
+    public Users getUsersByName(String name) {
+        logger.info("Get Users by Name: " + name);
+        String sql = "SELECT Username, Password, Enabled FROM Users WHERE Username = ?";
+        return template.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<Users>(Users.class));
     }
 
     public List<Users> getUsersByPage(int start, int total) {
@@ -90,7 +107,7 @@ public class UsersDAO {
                 Users u = new Users();
                 u.setUsername(rs.getString(1));
 //                u.setPassword(rs.getString(2));
-                u.setEnabled();
+                u.setEnabled(rs.getBoolean(3));
 //                u.setEnabled(rs.getString(3));
                 return u;
             }
@@ -107,4 +124,17 @@ public class UsersDAO {
 
         return 1;
     }
+
+//    public Map<Integer,String> getClientMap() {
+//        Map<Integer,String> client = new LinkedHashMap<Integer,String>();
+//        String sql = "SELECT ClientsID, First_Name FROM Clients ORDER BY First_Name";
+//        
+//        SqlRowSet rs = template.queryForRowSet(sql);
+//        
+//        while(rs.next()){
+//            client.put(rs.getInt(1), rs.getString(2));
+//        }
+//        
+//        return client;
+//    }
 }

@@ -21,7 +21,7 @@ public class Interactions implements Serializable {
     private Map<String, String> Contact_TypeMap;
 
     private Clients clients;
-    private Map<Integer, String> clientMap;
+    private Map<Integer, String> ClientInteractMap;
 
     public int getInteractionsID() {
         return InteractionsID;
@@ -98,10 +98,14 @@ public class Interactions implements Serializable {
         return Contact_TypeMap;
     }
 
-    public void setClient(Map<Integer, String> clientMap) {
-        this.clientMap = clientMap;
+    public void setClient(Map<Integer, String> ClientInteractMap) {
+        this.ClientInteractMap = ClientInteractMap;
     }
 
+    public Map<Integer, String> getClientInteractMap() {
+        return ClientInteractMap;
+    }
+    
     public String toString() {
         StringBuffer buffer = new StringBuffer();
 //        buffer.append("Interactions ID: " + this.InteractionsID + ";");

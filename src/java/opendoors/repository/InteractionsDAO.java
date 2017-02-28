@@ -116,7 +116,7 @@ public class InteractionsDAO {
         return 1;
     }
 
-    public Map<Integer, String> getClientsMap() {
+    public Map<Integer, String> getClientInteractMap() {
         Map<Integer, String> Clients = new LinkedHashMap<Integer, String>();
         String sql = "SELECT ClientsID, First_Name, Last_Name FROM Clients ORDER BY First_Name";
 

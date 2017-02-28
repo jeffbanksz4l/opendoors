@@ -33,7 +33,7 @@
                             <label><b>Interaction</b></label>
                             <form:select path="Clients_ID" cssClass="w3-select w3-border">
                                 <form:option value="-1">Select Client</form:option>
-                                <form:options items="${interactions.clients}"  />
+                                <form:options items="${interactions.clientInteractMap}"  />
                             </form:select>
                         </div>
                     </c:otherwise>

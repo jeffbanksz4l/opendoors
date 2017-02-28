@@ -95,9 +95,9 @@ public class UsersController {
         return new ModelAndView("viewusers", context);
     }
 
-    @RequestMapping(value = "/users/editusers/userName")
-    public ModelAndView edit(@PathVariable String userName) {
-        Users users = dao.getUsersByName(userName);
+    @RequestMapping(value = "/users/editusers/{name}")
+    public ModelAndView edit(@PathVariable String name) {
+        Users users = dao.getUsersByName(name);
         return new ModelAndView("userseditform", "users", users);
     }
 
@@ -136,7 +136,6 @@ public class UsersController {
 //
 //        return new ModelAndView("redirect:/users/viewusers");
 //    }
-
     @InitBinder("users")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(usersValidator);

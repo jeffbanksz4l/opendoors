@@ -13,7 +13,7 @@ public class Users implements Serializable {
 
     private String Username;
     private String Password;
-    private Boolean Enabled = true;
+    private Boolean Enabled;
     private List<String> Roles;
     private Map<String, String> RolesMap;
 //    private Map<String, String> EnabledMap;
@@ -35,18 +35,23 @@ public class Users implements Serializable {
     }
 
     public Boolean getEnabled() {
-        if (!Enabled) {
-            return Enabled = false;
-        } else {
-            return Enabled;
+        if(Enabled == null) {
+            return false;
         }
+//        if (!Enabled == true) {
+//            return Enabled = false;
+//        } else {
+//            return Enabled;
+//        }
+return Enabled;
     }
 
-    public void setEnabled() {
+    public void setEnabled(boolean Enabled) {
 //        if (!Enabled == true) {
 //            this.Enabled = Enabled;
 //        }
-        this.Enabled = Enabled;
+//        this.Enabled = Enabled;
+this.Enabled = Enabled;
     }
 
     public List<String> getRoles() {
