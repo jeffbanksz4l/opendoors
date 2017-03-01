@@ -62,6 +62,8 @@ public class UsersDAO {
         int r = template.update(sql, values);
 
         sql = "UPDATE INTO User_Roles (Username, Role) VALUES (?, ?)";
+        
+        logger.info("What is being passed in: " + values);
 
         for (String role : users.getRoles()) {
             Object[] role_values = {users.getUsername(), role};
