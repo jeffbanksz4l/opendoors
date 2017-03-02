@@ -18,16 +18,12 @@
             <form:hidden path="clientsID"  />
 
             <div class="w3-padding-8">
-                <form:input path="First_Name" cssClass="w3-input w3-border" placeholder="First Name"  />
-                <form:errors path="First_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                <form:input path="Last_Name" cssClass="w3-input w3-border" placeholder="Last Name"  />
-                <form:errors path="Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
+                <form:input path="Customer" cssClass="w3-input w3-border" placeholder="Customer"  />
+                <form:errors path="Customer" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_1" cssClass="w3-input w3-border" placeholder="Address Line 1"  />
                 <form:errors path="Address_Line_1" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="Address_Line_2" cssClass="w3-input w3-border" placeholder="Address Line 2"  />
                 <form:errors path="Address_Line_2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                <form:input path="Address_Line_3" cssClass="w3-input w3-border" placeholder="Address Line 3"  />
-                <form:errors path="Address_Line_3" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:input path="City" cssClass="w3-input w3-border" placeholder="City"  />
                 <form:errors path="City" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 <form:select path="State" cssClass="w3-input w3-border" cssStyle="w3-select w3-border" placeholder="State" >                    

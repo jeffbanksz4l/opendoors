@@ -79,10 +79,10 @@ public class InteractionsDAO {
     }
 
     public List<Interactions> getInteractionsByPage(int start, int total) {
-        String sql = "SELECT interactions.InteractionsID, interactions.Clients_ID, interactions.Date_Of_Contact, interactions.Contact_First_Name, interactions.Contact_Last_Name, interactions.Contact_Type, interactions.Conversations, clients.ClientsID, clients.First_Name, clients.Last_Name "
+        String sql = "SELECT interactions.InteractionsID, interactions.Clients_ID, interactions.Date_Of_Contact, interactions.Contact_First_Name, interactions.Contact_Last_Name, interactions.Contact_Type, interactions.Conversations, clients.ClientsID, clients.Customer "
                 + "FROM Interactions AS interactions "
                 + "INNER JOIN Clients AS clients ON clients.ClientsID = interactions.Clients_ID "
-                + "ORDER BY clients.First_Name, interactions.Date_Of_Contact "
+                + "ORDER BY clients.Customer, interactions.Date_Of_Contact "
                 + "LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Interactions>() {
             public Interactions mapRow(ResultSet rs, int row) throws SQLException {
@@ -97,7 +97,7 @@ public class InteractionsDAO {
 
                 Clients clients = new Clients();
                 clients.setClientsID(rs.getInt(8));
-                clients.setFirst_Name(rs.getString(9));
+                clients.setCustomer(rs.getString(9));
 
                 i.setClients(clients);
                 return i;
@@ -118,7 +118,7 @@ public class InteractionsDAO {
 
     public Map<Integer, String> getClientInteractMap() {
         Map<Integer, String> Clients = new LinkedHashMap<Integer, String>();
-        String sql = "SELECT ClientsID, First_Name, Last_Name FROM Clients ORDER BY First_Name";
+        String sql = "SELECT ClientsID, Customer FROM Clients ORDER BY Customer";
 
         SqlRowSet rs = template.queryForRowSet(sql);
 

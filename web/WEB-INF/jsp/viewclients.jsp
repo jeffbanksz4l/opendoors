@@ -23,16 +23,14 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Customer</th>
             <th>Status</th>
             <th>Action</th>
         </tr>  
 
         <c:forEach var="clients" items="${list}">   
             <tr>
-                <td>${clients.first_Name}</td>
-                <td>${clients.last_Name}</td>
+                <td>${clients.customer}</td>
                 <td>${clients.status}</td>
                 <td>
                     <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-brown">Edit</button></a>

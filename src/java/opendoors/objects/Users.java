@@ -35,7 +35,7 @@ public class Users implements Serializable {
     }
 
     public Boolean getEnabled() {
-        if(Enabled == null) {
+        if (Enabled == null) {
             return false;
         }
 //        if (!Enabled == true) {
@@ -43,7 +43,7 @@ public class Users implements Serializable {
 //        } else {
 //            return Enabled;
 //        }
-return Enabled;
+        return Enabled;
     }
 
     public void setEnabled(boolean Enabled) {
@@ -51,7 +51,7 @@ return Enabled;
 //            this.Enabled = Enabled;
 //        }
 //        this.Enabled = Enabled;
-this.Enabled = Enabled;
+        this.Enabled = Enabled;
     }
 
     public List<String> getRoles() {
@@ -73,7 +73,8 @@ this.Enabled = Enabled;
 
     public String toString() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append("Username: " + this.Username + ";");
+//        buffer.append("Username: " + this.Username + ";");
+        buffer.append(this.Username.substring(0, 1).toUpperCase() + this.Username.substring(1).toLowerCase());
         buffer.append("Enabled: " + this.Enabled);
         return buffer.toString();
     }

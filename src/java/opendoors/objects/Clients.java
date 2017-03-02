@@ -12,11 +12,9 @@ import java.util.Map;
 public class Clients implements Serializable {
 
     private int ClientsID;
-    private String First_Name;
-    private String Last_Name;
+    private String Customer;
     private String Address_Line_1;
     private String Address_Line_2;
-    private String Address_Line_3;
     private String City;
     private String State;
     private String Postal_Code;
@@ -38,20 +36,12 @@ public class Clients implements Serializable {
         this.ClientsID = ClientsID;
     }
 
-    public String getFirst_Name() {
-        return First_Name;
+    public String getCustomer() {
+        return Customer;
     }
 
-    public void setFirst_Name(String First_Name) {
-        this.First_Name = First_Name;
-    }
-
-    public String getLast_Name() {
-        return Last_Name;
-    }
-
-    public void setLast_Name(String Last_Name) {
-        this.Last_Name = Last_Name;
+    public void setCustomer(String Customer) {
+        this.Customer = Customer;
     }
 
     public String getAddress_Line_1() {
@@ -68,14 +58,6 @@ public class Clients implements Serializable {
 
     public void setAddress_Line_2(String Address_Line_2) {
         this.Address_Line_2 = Address_Line_2;
-    }
-
-    public String getAddress_Line_3() {
-        return Address_Line_3;
-    }
-
-    public void setAddress_Line_3(String Address_Line_3) {
-        this.Address_Line_3 = Address_Line_3;
     }
 
     public String getCity() {
@@ -233,13 +215,11 @@ public class Clients implements Serializable {
 //    }
     public String toString() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append(this.First_Name + " " + this.Last_Name);
+        buffer.append(this.Customer + " " + this.Customer);
 //        buffer.append("Clients ID: " + this.ClientsID + ";");
-//        buffer.append("First Name: " + this.First_Name + ";");
-//        buffer.append("Last Name: " + this.Last_Name + ";");
+//        buffer.append("First Customer: " + this.Customer + ";");
 //        buffer.append("Address Line 1: " + this.Address_Line_1 + ";");
 //        buffer.append("Address Line 2: " + this.Address_Line_2 + ";");
-//        buffer.append("Address Line 3: " + this.Address_Line_3 + ";");
 //        buffer.append("City: " + this.City + ";");
 //        buffer.append("State: " + this.State + ";");
 //        buffer.append("Postal Code: " + this.Postal_Code + ";");

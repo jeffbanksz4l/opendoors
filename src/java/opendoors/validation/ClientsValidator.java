@@ -25,8 +25,7 @@ public class ClientsValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "First_Name", "clients.First_Name.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Last_Name", "clients.Last_Name.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Customer", "clients.Customer.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Address_Line_1", "clients.Address_Line_1.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "City", "clients.City.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "State", "clients.State.required");
@@ -34,27 +33,19 @@ public class ClientsValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Status", "clients.Status.required");
 
         Clients clients = (Clients) target;
-        if (clients.getFirst_Name().length() > 45) {
-            errors.rejectValue("First_Name", "clients.First_Name.length", "default");
+        if (clients.getCustomer().length() > 45) {
+            errors.rejectValue("Customer", "clients.Customer.length", "default");
         }
 
-        if (!clients.getFirst_Name().matches("^[a-zA-Z0-9-_. ]+$")) {
-            errors.rejectValue("First_Name", "clients.First_Name.pattern", "default");
-        }
-
-        if (clients.getLast_Name().length() > 45) {
-            errors.rejectValue("Last_Name", "clients.Last_Name.length", "default");
-        }
-
-        if (!clients.getLast_Name().matches("^[a-zA-Z0-9-_. ]+$")) {
-            errors.rejectValue("Last_Name", "clients.Last_Name.pattern", "default");
+        if (!clients.getCustomer().matches("^[a-zA-Z\\ \\'&-.]*$")) {
+            errors.rejectValue("Customer", "clients.Customer.pattern", "default");
         }
 
         if (clients.getAddress_Line_1().length() > 45) {
             errors.rejectValue("Address_Line_1", "clients.Address_Line_1.length", "default");
         }
 
-        if (clients.getAddress_Line_1().matches("^[A-Za-z0-9]*$")) {
+        if (clients.getAddress_Line_1().matches("^[a-zA-Z0-9]+$")) {
             errors.rejectValue("Address_Line_1", "clients.Address_Line_1.pattern", "default");
         }
 
@@ -67,18 +58,6 @@ public class ClientsValidator implements Validator {
             }
         }
 
-        if (!clients.getAddress_Line_3().isEmpty()) {
-            if (clients.getAddress_Line_3().length() > 70) {
-                errors.rejectValue("Address_Line_3", "clients.Address_Line_3.length", "default");
-            }
-        }
-
-        if (!clients.getAddress_Line_3().isEmpty()) {
-            if (!clients.getAddress_Line_3().matches("^[A-Za-z0-9]*$")) {
-                errors.rejectValue("Address_Line_3", "clients.Address_Line_3.pattern", "default");
-            }
-        }
-
         if (clients.getCity().length() > 45) {
             errors.rejectValue("City", "clients.City.length", "default");
         }
@@ -86,10 +65,6 @@ public class ClientsValidator implements Validator {
         if (!clients.getCity().matches("^[a-zA-Z0-9-_. ]+$")) {
             errors.rejectValue("City", "clients.City.pattern", "default");
         }
-
-//        if (clients.getState().length() != 2) {
-//            errors.rejectValue("State", "clients.State.length", "default");
-//        }
 
         if (!clients.getState().matches("^[A-Za-z- ]*$")) {
             errors.rejectValue("State", "clients.State.pattern", "default");
@@ -120,13 +95,5 @@ public class ClientsValidator implements Validator {
                 errors.rejectValue("Phone_2", "clients.Phone_2.pattern", "default");
             }
         }
-
-//        if (clients.getStatus().length() != 1) {
-//            errors.rejectValue("Status", "clients.Status.length", "default");
-//        }
-//
-//        if (!clients.getStatus().matches("^[PCI]*$")) {
-//            errors.rejectValue("Status", "clients.Status.pattern", "default");
-//        }
     }
 }
