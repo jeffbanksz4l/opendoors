@@ -45,7 +45,7 @@ public class ClientsValidator implements Validator {
             errors.rejectValue("Address_Line_1", "clients.Address_Line_1.length", "default");
         }
 
-        if (clients.getAddress_Line_1().matches("^[a-zA-Z0-9]+$")) {
+        if (clients.getAddress_Line_1().matches("^[a-zA-Z0-9_.,\'#]+$")) {
             errors.rejectValue("Address_Line_1", "clients.Address_Line_1.pattern", "default");
         }
 
@@ -53,7 +53,7 @@ public class ClientsValidator implements Validator {
             if (clients.getAddress_Line_2().length() > 70) {
                 errors.rejectValue("Address_Line_2", "clients.Address_Line_2.length", "default");
             }
-            if (!clients.getAddress_Line_2().matches("^[A-Za-z0-9 _.,!\"'/$]*$")) {
+            if (!clients.getAddress_Line_2().matches("^[A-Za-z0-9 _.,!\"'/$#]*$")) {
                 errors.rejectValue("Address_Line_2", "clients.Address_Line_2.pattern", "default");
             }
         }
@@ -74,7 +74,7 @@ public class ClientsValidator implements Validator {
             errors.rejectValue("Postal_Code", "clients.Postal_Code.length", "default");
         }
 
-        if (!clients.getPostal_Code().matches("^[A-Za-z0-9]*$")) {
+        if (!clients.getPostal_Code().matches("^[0-9]{5}(?:-[0-9]{4})?$")) {
             errors.rejectValue("Postal_Code", "clients.Postal_Code.pattern", "default");
         }
 

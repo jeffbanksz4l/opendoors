@@ -10,7 +10,7 @@
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
     <div class="w3-card-4">
-        <div class="w3-container w3-blue">
+        <div class="w3-container w3-text-white" style="background-color: #60755b">
             <h2>Interactions</h2>
         </div>
 

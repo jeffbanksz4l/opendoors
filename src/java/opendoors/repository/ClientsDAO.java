@@ -28,7 +28,7 @@ public class ClientsDAO {
     }
 
     public int save(Clients clients) {
-        String sql = "INSERT INTO Clients (Customer,  Address_Line_1, Address_Line_2, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Clients (Customer,  Address_Line_1, Address_Line_2, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Object[] values = {clients.getCustomer(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus()};
 
