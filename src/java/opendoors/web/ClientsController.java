@@ -71,7 +71,7 @@ public class ClientsController {
 
     @RequestMapping("/clients/viewclients/{pageid}")
     public ModelAndView viewclients(@PathVariable int pageid, HttpServletRequest request) {
-        int total = 25;
+        int total = 10;
         int start = 1;
 
         if (pageid != 1) {

@@ -43,7 +43,7 @@
 
             <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
             <a href="<c:url value="/" />" class="w3-padding" style="background-color: #dbd6af"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
-
+            
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-users fa-fw"></i> Clients/Prospects <i class="fa fa-caret-down"></i></a>
                 <!--<div class="w3-dropdown-hover">-->

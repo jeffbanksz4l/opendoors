@@ -23,7 +23,7 @@
                         <div class="w3-padding-8">
                             <div class="w3-panel w3-border w3-white">
                                 <p>${interactions.clients}</p>
-                                <p>${clients.First_Name}</p>
+                                <p>${clients.customer}</p>
                             </div>
                         </div>
                     </c:when>

@@ -123,9 +123,31 @@ public class InteractionsDAO {
         SqlRowSet rs = template.queryForRowSet(sql);
 
         while (rs.next()) {
-            Clients.put(rs.getInt(1), rs.getString(2) + " " + rs.getString(3));
+            Clients.put(rs.getInt(1), rs.getString(2));
         }
 
         return Clients;
     }
+    
+    
+//    public List<Interactions> getCustIntList() {
+//        return template.query("SELECT interactions.Clients_ID, clients.ClientsID, clients.Customer "
+//                + "FROM Interactions AS interactions "
+//                + "INNER JOIN Clients AS clients ON clients.ClientsID = interactions.Clients_ID "
+//                + "ORDER BY clients.Customer ", new RowMapper<Interactions>() {
+//            public Interactions mapRow(ResultSet rs, int row) throws SQLException {
+//                Interactions ci = new Interactions();
+//                ci.setClients_ID(rs.getString("Customer"));
+//                ci.setClients_ID(rs.getInt("Clients ID"));
+////                i.setDate_Of_Contact(rs.getDate("Date Of Contact"));
+////                i.setContact_First_Name(rs.getString("Contact First Name"));
+////                i.setContact_Last_Name(rs.getString("Contact Last Name"));
+////                i.setContact_Type(rs.getString("Contact Type"));
+////                i.setConversations(rs.getString("Conversations"));
+//                return ci;
+//            }
+//        });
+//    }
+    
+    
 }

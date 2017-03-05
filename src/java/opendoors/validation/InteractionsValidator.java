@@ -37,11 +37,11 @@ public class InteractionsValidator implements Validator {
 //        }
 
         if (!interactions.getContact_First_Name().matches("^[a-zA-Z0-9-_. ]+$")) {
-            errors.rejectValue("First_Name", "interactions.First_Name.pattern", "default");
+            errors.rejectValue("Contact_First_Name", "interactions.First_Name.pattern", "default");
         }
 
         if (!interactions.getContact_Last_Name().matches("^[a-zA-Z0-9-_. ]+$")) {
-            errors.rejectValue("Last_Name", "interactions.Last_Name.pattern", "default");
+            errors.rejectValue("Contact_Last_Name", "interactions.Last_Name.pattern", "default");
         }
     }
 

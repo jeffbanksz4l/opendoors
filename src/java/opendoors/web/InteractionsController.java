@@ -14,9 +14,14 @@ import opendoors.objects.Clients;
 import opendoors.objects.Message;
 import opendoors.repository.InteractionsDAO;
 import opendoors.repository.ClientsDAO;
+import opendoors.validation.InteractionsValidator;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -30,6 +35,9 @@ public class InteractionsController {
 
     @Autowired
     ClientsDAO adao = new ClientsDAO();
+
+    @Autowired
+    private InteractionsValidator interactionsValidator;
 
     private static final Logger logger = Logger.getLogger(InteractionsController.class.getName());
 
@@ -79,7 +87,7 @@ public class InteractionsController {
 
     @RequestMapping("/interactions/viewinteractions/{pageid}")
     public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request) {
-        int total = 25;
+        int total = 10;
         int start = 1;
 
         if (pageid != 1) {
@@ -147,4 +155,16 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
+    @InitBinder("interactions")
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(interactionsValidator);
+    }
+
+    public InteractionsValidator getInteractionsValidator() {
+        return interactionsValidator;
+    }
+
+    public void setInteractionsValidator(InteractionsValidator interactionsValidator) {
+        this.interactionsValidator = interactionsValidator;
+    }
 }
