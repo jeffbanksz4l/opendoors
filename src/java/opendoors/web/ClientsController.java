@@ -69,11 +69,14 @@ public class ClientsController {
         return this.viewclients(1, request);
     }
 
+//    @RequestMapping("/clients/clientdisplay")
+//    public ModelAndView clientdisplay(HttpServletRequest request) {
+//        return this.clientdisplay(request);
+//    }
     @RequestMapping("/clients/viewclients/{pageid}")
     public ModelAndView viewclients(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
         int start = 1;
-
         if (pageid != 1) {
             start = (pageid - 1) * total + 1;
         }
@@ -102,6 +105,12 @@ public class ClientsController {
     public ModelAndView edit(@PathVariable int id) {
         Clients clients = dao.getClientsById(id);
         return new ModelAndView("clientseditform", "clients", clients);
+    }
+
+    @RequestMapping(value = "/clients/clientdisplay/{id}")
+    public ModelAndView display(@PathVariable int id) {
+        Clients clients = dao.getClientsById(id);
+        return new ModelAndView("clientdisplay", "clients", clients);
     }
 
     @RequestMapping(value = "/clients/editsave", method = RequestMethod.POST)
@@ -139,6 +148,24 @@ public class ClientsController {
 
         return new ModelAndView("redirect:/clients/viewclients");
     }
+
+//    @RequestMapping("/clients/clientdisplay")
+//    public ModelAndView clientdisplay(HttpServletRequest request) {
+//
+//        List<Clients> limit = dao.getClientsLimit();
+//
+//        HashMap<String, Object> context = new HashMap<String, Object>();
+//        context.put("limit", limit);
+//
+//        Message msg = (Message) request.getSession().getAttribute("message");
+//
+//        if (msg != null) {
+//            context.put("message", msg);
+//            request.getSession().removeAttribute("message");
+//        }
+//
+//        return new ModelAndView("clientdisplay", context);
+//    }
 
     @InitBinder("clients")
     public void initBinder(WebDataBinder webDataBinder) {

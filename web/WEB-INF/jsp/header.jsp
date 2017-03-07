@@ -43,7 +43,7 @@
 
             <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
             <a href="<c:url value="/" />" class="w3-padding" style="background-color: #dbd6af"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
-            
+
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-users fa-fw"></i> Clients/Prospects <i class="fa fa-caret-down"></i></a>
                 <!--<div class="w3-dropdown-hover">-->
@@ -67,6 +67,14 @@
                     <a href="<c:url value="/users/viewusers" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i>  View Users  <!-- <i class="fa fa-caret-down"></i> --></a>
                     <!-- <div class="w3-dropdown-content w3-white w3-card-4"> -->
                     <a class="w3-padding" style="background-color: #98c8de" href="<c:url value="/users/usersform" />"><i class="fa fa-plus fa-fw"></i>  Add User </a>
+                </div>
+
+                <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-user-plus fa-fw"></i> Client View <i class="fa fa-caret-down"></i></a>
+                <!--<div class="w3-dropdown-hover">-->
+                <div class="w3-hide w3-white w3-card-4">
+                    <a href="<c:url value="/users/clientdisplay" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i>  Client View  <!-- <i class="fa fa-caret-down"></i> --></a>
+                    <!-- <div class="w3-dropdown-content w3-white w3-card-4"> -->
+                    <!-- <a class="w3-padding" style="background-color: #98c8de" href="<c:url value="/users/usersform" />"><i class="fa fa-plus fa-fw"></i>  Add User </a> -->
                 </div>
 
                 <script>

@@ -98,7 +98,6 @@ public class UsersDAO {
                 u.setUsername(rs.getString("Username"));
                 u.setPassword(rs.getString("Password"));
                 u.setEnabled(rs.getBoolean("Enabled"));
-//                u.setEnabled(rs.getString("Enabled"));
                 return u;
             }
         });
@@ -125,15 +124,17 @@ public class UsersDAO {
     }
 
     public int getUsersCount() {
-        String sql = "SELECT COUNT(Username) AS rowcount FROM Users";
+        String sql = "SELECT COUNT(Username) AS urowcount FROM Users";
         SqlRowSet rs = template.queryForRowSet(sql);
 
         if (rs.next()) {
-            return rs.getInt("rowcount");
+            return rs.getInt("urowcount");
         }
 
         return 1;
     }
+
+    
 
 //    public Map<Integer,String> getClientMap() {
 //        Map<Integer,String> client = new LinkedHashMap<Integer,String>();

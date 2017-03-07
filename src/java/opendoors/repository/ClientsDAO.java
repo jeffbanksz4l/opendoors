@@ -107,13 +107,34 @@ public class ClientsDAO {
     }
 
     public int getClientsCount() {
-        String sql = "SELECT COUNT(ClientsID) AS rowcount FROM Clients";
+        String sql = "SELECT COUNT(ClientsID) AS crowcount FROM Clients";
         SqlRowSet rs = template.queryForRowSet(sql);
 
         if (rs.next()) {
-            return rs.getInt("rowcount");
+            return rs.getInt("crowcount");
         }
 
         return 1;
+    }
+    
+    public List<Clients> getClientsLimit() {
+        String sql = "SELECT * FROM Clients ORDER BY ClientsID DESC LIMIT 5";
+        return template.query(sql, new RowMapper<Clients>() {
+            public Clients mapRow(ResultSet rs, int row) throws SQLException {
+                Clients c = new Clients();
+                c.setClientsID(rs.getInt(1));
+                c.setCustomer(rs.getString(2));
+                c.setAddress_Line_1(rs.getString(3));
+                c.setAddress_Line_2(rs.getString(4));
+                c.setCity(rs.getString(5));
+                c.setState(rs.getString(6));
+                c.setPostal_Code(rs.getString(7));
+                c.setEmail(rs.getString(8));
+                c.setPhone_1(rs.getString(9));
+                c.setPhone_2(rs.getString(10));
+                c.setStatus(rs.getString(11));
+                return c;
+            }
+        });
     }
 }

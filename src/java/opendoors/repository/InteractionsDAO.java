@@ -87,6 +87,7 @@ public class InteractionsDAO {
         return template.query(sql, new RowMapper<Interactions>() {
             public Interactions mapRow(ResultSet rs, int row) throws SQLException {
                 Interactions i = new Interactions();
+                Clients clients = new Clients();
                 i.setInteractionsID(rs.getInt(1));
                 i.setClients_ID(rs.getInt(2));
                 i.setDate_Of_Contact(rs.getDate(3));
@@ -94,8 +95,7 @@ public class InteractionsDAO {
                 i.setContact_Last_Name(rs.getString(5));
                 i.setContact_Type(rs.getString(6));
                 i.setConversations(rs.getString(7));
-
-                Clients clients = new Clients();
+//                Clients clients = new Clients();
                 clients.setClientsID(rs.getInt(8));
                 clients.setCustomer(rs.getString(9));
 
@@ -106,11 +106,11 @@ public class InteractionsDAO {
     }
 
     public int getInteractionsCount() {
-        String sql = "SELECT COUNT(InteractionsID) AS rowcount FROM Interactions";
+        String sql = "SELECT COUNT(InteractionsID) AS irowcount FROM Interactions";
         SqlRowSet rs = template.queryForRowSet(sql);
 
         if (rs.next()) {
-            return rs.getInt("rowcount");
+            return rs.getInt("irowcount");
         }
 
         return 1;
@@ -127,6 +127,23 @@ public class InteractionsDAO {
         }
 
         return Clients;
+    }
+    
+    public List<Interactions> getInteractionsLimit() {
+        String sql = "SELECT * FROM Interactions ORDER BY InteractionsID DESC LIMIT 5";
+        return template.query(sql, new RowMapper<Interactions>() {
+            public Interactions mapRow(ResultSet rs, int row) throws SQLException {
+                Interactions i = new Interactions();
+                i.setInteractionsID(rs.getInt(1));
+                i.setClients_ID(rs.getInt(2));
+                i.setDate_Of_Contact(rs.getDate(3));
+                i.setContact_First_Name(rs.getString(4));
+                i.setContact_Last_Name(rs.getString(5));
+                i.setContact_Type(rs.getString(6));
+                i.setConversations(rs.getString(7));
+                return i;
+            }
+        });
     }
     
     

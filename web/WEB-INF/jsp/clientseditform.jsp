@@ -10,7 +10,7 @@
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
     <div class="w3-card-4">
-        <div class="w3-container w3-blue">
+        <div class="w3-container w3-text-white" style="background-color: #60755b">
             <h2>Client/Prospect Information</h2>
         </div>
 
@@ -44,7 +44,7 @@
                 <form:errors path="Status" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 </div>
                 <div class="w3-padding-8">
-                    <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+                    <button type="submit" class="w3-btn w3-padding" style="width:120px; background-color: #60755b">Save</button>
                 </div>
         </form:form>
 
