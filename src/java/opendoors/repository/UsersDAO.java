@@ -10,9 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import opendoors.objects.Users;
-import opendoors.objects.Clients;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -26,10 +23,21 @@ public class UsersDAO {
 
     private static final Logger logger = Logger.getLogger(UsersDAO.class.getName());
 
+    /**
+     * Setting the JDBC Template
+     *
+     * @param template
+     */
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
+    /**
+     * SQL Query for Saving Users
+     *
+     * @param users
+     * @return
+     */
     public int save(Users users) {
         String sql = "INSERT INTO Users (Username, Password, Enabled) values (?, md5(?), ?)";
 
@@ -52,6 +60,12 @@ public class UsersDAO {
         return r;
     }
 
+    /**
+     * SQL Query for Updating Users
+     *
+     * @param users
+     * @return
+     */
     public int update(Users users) {
         String sql = "UPDATE Users SET Password = md5(?), Enabled = ? WHERE Username = ?";
 
@@ -84,13 +98,11 @@ public class UsersDAO {
         return r;
     }
 
-//    public int delete(int id) {
-//        String sql = "DELETE FROM Users WHERE Username = ?";
-//
-//        Object[] values = {id};
-//
-//        return template.update(sql, values);
-//    }
+    /**
+     * SQL Query for Mapping the List of Users
+     *
+     * @return
+     */
     public List<Users> getUsersList() {
         return template.query("SELECT * FROM Users", new RowMapper<Users>() {
             public Users mapRow(ResultSet rs, int row) throws SQLException {
@@ -103,12 +115,25 @@ public class UsersDAO {
         });
     }
 
+    /**
+     * SQL Query for Mapping the Users by Name
+     *
+     * @param name
+     * @return
+     */
     public Users getUsersByName(String name) {
         logger.info("Get Users by Name: " + name);
         String sql = "SELECT Username, Password, Enabled FROM Users WHERE Username = ?";
         return template.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<Users>(Users.class));
     }
 
+    /**
+     * SQL Query for Mapping the List of Users for pagination
+     *
+     * @param start
+     * @param total
+     * @return
+     */
     public List<Users> getUsersByPage(int start, int total) {
         String sql = "SELECT * FROM Users LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Users>() {
@@ -117,12 +142,16 @@ public class UsersDAO {
                 u.setUsername(rs.getString(1));
 //                u.setPassword(rs.getString(2));
                 u.setEnabled(rs.getBoolean(3));
-//                u.setEnabled(rs.getString(3));
                 return u;
             }
         });
     }
 
+    /**
+     * SQL query for Getting the User Count
+     *
+     * @return
+     */
     public int getUsersCount() {
         String sql = "SELECT COUNT(Username) AS urowcount FROM Users";
         SqlRowSet rs = template.queryForRowSet(sql);
@@ -133,19 +162,4 @@ public class UsersDAO {
 
         return 1;
     }
-
-    
-
-//    public Map<Integer,String> getClientMap() {
-//        Map<Integer,String> client = new LinkedHashMap<Integer,String>();
-//        String sql = "SELECT ClientsID, First_Name FROM Clients ORDER BY First_Name";
-//        
-//        SqlRowSet rs = template.queryForRowSet(sql);
-//        
-//        while(rs.next()){
-//            client.put(rs.getInt(1), rs.getString(2));
-//        }
-//        
-//        return client;
-//    }
 }

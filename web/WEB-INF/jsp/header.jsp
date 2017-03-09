@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<c:url value="/media/jquery.datetimepicker.min.css" />" />
+
     <style>
         html,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         body, nav, footer {background-color: #b9cb9a}
@@ -44,56 +46,46 @@
             <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
             <a href="<c:url value="/" />" class="w3-padding" style="background-color: #dbd6af"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
 
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <sec:authorize access="hasRole('ROLE_USER')">
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-users fa-fw"></i> Clients/Prospects <i class="fa fa-caret-down"></i></a>
-                <!--<div class="w3-dropdown-hover">-->
                 <div class="w3-hide w3-white w3-card-4">
                     <a href="<c:url value="/clients/viewclients" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-binoculars fa-fw"></i>  View Clients/Prospects  <!-- <i class="fa fa-caret-down"></i> --></a>
-                    <!-- <div class="w3-dropdown-content w3-white w3-card-4">  -->
                     <a class="w3-padding" style="background-color: #98c8de" href="<c:url value="/clients/clientsform" />"><i class="fa fa-plus fa-fw"></i>  Add Client/Prospect </a>
                 </div>
 
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-comments fa-fw"></i> Interactions <i class="fa fa-caret-down"></i></a>
-                <!--<div class="w3-dropdown-hover">-->
                 <div class="w3-hide w3-white w3-card-4">
                     <a href="<c:url value="/interactions/viewinteractions" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-comments fa-fw"></i>  View Interactions  <!-- <i class="fa fa-caret-down"></i> --></a>
-                    <!-- <div class="w3-dropdown-content w3-white w3-card-4"> -->
                     <a class="w3-padding" style="background-color: #98c8de" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus fa-fw"></i>  Add Interaction </a>
                 </div>
+            </sec:authorize>
 
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-user-plus fa-fw"></i> Users <i class="fa fa-caret-down"></i></a>
-                <!--<div class="w3-dropdown-hover">-->
                 <div class="w3-hide w3-white w3-card-4">
                     <a href="<c:url value="/users/viewusers" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i>  View Users  <!-- <i class="fa fa-caret-down"></i> --></a>
-                    <!-- <div class="w3-dropdown-content w3-white w3-card-4"> -->
                     <a class="w3-padding" style="background-color: #98c8de" href="<c:url value="/users/usersform" />"><i class="fa fa-plus fa-fw"></i>  Add User </a>
                 </div>
 
-                <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-user-plus fa-fw"></i> Client View <i class="fa fa-caret-down"></i></a>
-                <!--<div class="w3-dropdown-hover">-->
+                <!-- <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-user-plus fa-fw"></i> Client View <i class="fa fa-caret-down"></i></a> -->
                 <div class="w3-hide w3-white w3-card-4">
                     <a href="<c:url value="/users/clientdisplay" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i>  Client View  <!-- <i class="fa fa-caret-down"></i> --></a>
-                    <!-- <div class="w3-dropdown-content w3-white w3-card-4"> -->
-                    <!-- <a class="w3-padding" style="background-color: #98c8de" href="<c:url value="/users/usersform" />"><i class="fa fa-plus fa-fw"></i>  Add User </a> -->
                 </div>
-
-                <script>
-                    function myAccFunc(elem) {
-                        var x = elem.nextElementSibling;
-                        if (x.className.indexOf("w3-show") == -1) {
-                            x.className += " w3-show";
-                            x.previousElementSibling.className += " #98c8de";
-                        } else {
-                            x.className = x.className.replace(" w3-show", "");
-                            x.previousElementSibling.className =
-                                    x.previousElementSibling.className.replace(" w3-green", "");
-                        }
-                    }
-                </script>
-
-
-
             </sec:authorize>
+
+            <script>
+                function myAccFunc(elem) {
+                    var x = elem.nextElementSibling;
+                    if (x.className.indexOf("w3-show") == -1) {
+                        x.className += " w3-show";
+                        x.previousElementSibling.className += " #98c8de";
+                    } else {
+                        x.className = x.className.replace(" w3-show", "");
+                        x.previousElementSibling.className =
+                                x.previousElementSibling.className.replace(" w3-green", "");
+                    }
+                }
+            </script>
 
             <!--
             <a href="#" class="w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
@@ -104,13 +96,13 @@
             <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
             <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
             -->
+
             <a href="#" onclick="logoutFormSubmit();" class="w3-padding w3-text-white" style="background-color: #303a2d"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
 
             <form action="<c:url value="/j_spring_security_logout" />" method="post" id="logoutForm">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
         </nav>
-
 
         <!-- Overlay effect when opening sidenav on small screens -->
         <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

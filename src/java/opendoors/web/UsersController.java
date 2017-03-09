@@ -36,11 +36,24 @@ public class UsersController {
 
     private static final Logger logger = Logger.getLogger(UsersController.class.getName());
 
+    /**
+     * Mapping for showing the Users Form
+     *
+     * @return
+     */
     @RequestMapping("/users/usersform")
     public ModelAndView showform() {
         return new ModelAndView("usersform", "users", new Users());
     }
 
+    /**
+     * Mapping for Posting data from the Users Form - contains error messages
+     *
+     * @param users
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/users/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("users") @Valid Users users, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -61,11 +74,24 @@ public class UsersController {
         return new ModelAndView("redirect:/users/viewusers");
     }
 
+    /**
+     * Mapping to View Users
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/users/viewusers")
     public ModelAndView viewusers(HttpServletRequest request) {
         return this.viewusers(1, request);
     }
 
+    /**
+     * Mapping the View Users with pagination - contains error messages
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
     @RequestMapping("/users/viewusers/{pageid}")
     public ModelAndView viewusers(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
@@ -95,12 +121,27 @@ public class UsersController {
         return new ModelAndView("viewusers", context);
     }
 
+    /**
+     * Mapping to Edit Users based on Username
+     *
+     * @param name
+     * @return
+     */
     @RequestMapping(value = "/users/editusers/{name}")
     public ModelAndView edit(@PathVariable String name) {
         Users users = dao.getUsersByName(name);
         return new ModelAndView("userseditform", "users", users);
     }
 
+    /**
+     * Mapping for Posting Edited data from the Users Form - contains error
+     * messages
+     *
+     * @param users
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/users/editsave", method = RequestMethod.POST)
     public ModelAndView editsave(@ModelAttribute("users") @Valid Users users, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -121,30 +162,30 @@ public class UsersController {
         return new ModelAndView("redirect:/users/viewusers");
     }
 
-//    @RequestMapping(value = "/users/deleteusers/{id}", method = RequestMethod.GET)
-//    public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
-//        int r = dao.delete(id);
-//
-//        Message msg = null;
-//        if (r == 1) {
-//            msg = new Message(Message.Level.INFO, "User has been successfully deleted");
-//        } else {
-//            msg = new Message(Message.Level.ERROR, "Delete user failed");
-//        }
-//
-//        request.getSession().setAttribute("message", msg);
-//
-//        return new ModelAndView("redirect:/users/viewusers");
-//    }
+    /**
+     * Initiate User Validator
+     *
+     * @param webDataBinder
+     */
     @InitBinder("users")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(usersValidator);
     }
 
+    /**
+     * Get User Validator
+     *
+     * @return
+     */
     public UsersValidator getUsersValidator() {
         return usersValidator;
     }
 
+    /**
+     * Set User Validator
+     *
+     * @param usersValidator
+     */
     public void setUsersValidator(UsersValidator usersValidator) {
         this.usersValidator = usersValidator;
     }

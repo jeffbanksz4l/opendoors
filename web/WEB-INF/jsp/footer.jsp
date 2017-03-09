@@ -9,8 +9,6 @@
 <!-- End page content -->
 </div>
 
-
-
 <script>
 // Get the Sidenav
     var mySidenav = document.getElementById("mySidenav");

@@ -36,11 +36,25 @@ public class ClientsController {
 
     private static final Logger logger = Logger.getLogger(ClientsController.class.getName());
 
+    /**
+     * Mapping for showing the Clients Form
+     *
+     * @return
+     */
     @RequestMapping("/clients/clientsform")
     public ModelAndView showform() {
         return new ModelAndView("clientsform", "clients", new Clients());
     }
 
+    /**
+     ** Mapping for Posting data from the Clients Form - contains error
+     * messages
+     *
+     * @param clients
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/clients/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("clients") @Valid Clients clients, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -64,15 +78,48 @@ public class ClientsController {
         return new ModelAndView("redirect:/clients/viewclients");
     }
 
+    /**
+     * Mapping to View Clients
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/clients/viewclients")
     public ModelAndView viewclients(HttpServletRequest request) {
         return this.viewclients(1, request);
     }
 
-//    @RequestMapping("/clients/clientdisplay")
-//    public ModelAndView clientdisplay(HttpServletRequest request) {
-//        return this.clientdisplay(request);
-//    }
+    /**
+     * Mapping the Convert the status of existing Clients/Prospects to Inactive
+     * - contains error messages
+     *
+     * @param id
+     * @param request
+     * @return
+     */
+    @RequestMapping("/clients/convert/{id}")
+    public ModelAndView convert(@PathVariable int id, HttpServletRequest request) {
+
+        int r = dao.convert(id);
+
+        Message msg = null;
+        if (r == 1) {
+            msg = new Message(Message.Level.INFO, "Status has been successfully changed");
+        } else {
+            msg = new Message(Message.Level.ERROR, "Status was not changed");
+        }
+
+        request.getSession().setAttribute("message", msg);
+        return new ModelAndView("redirect:/clients/viewclients");
+    }
+
+    /**
+     * Mapping the View Clients with pagination - contains error messages
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
     @RequestMapping("/clients/viewclients/{pageid}")
     public ModelAndView viewclients(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
@@ -101,18 +148,41 @@ public class ClientsController {
         return new ModelAndView("viewclients", context);
     }
 
+    /**
+     * Mapping to Edit Clients based on Clients ID
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/clients/editclients/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Clients clients = dao.getClientsById(id);
         return new ModelAndView("clientseditform", "clients", clients);
     }
 
-    @RequestMapping(value = "/clients/clientdisplay/{id}")
-    public ModelAndView display(@PathVariable int id) {
-        Clients clients = dao.getClientsById(id);
-        return new ModelAndView("clientdisplay", "clients", clients);
+    /**
+     * Mapping to Display Clients based on Clients ID
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/clients/clientdisplay/{id}", method = RequestMethod.GET)
+    public ModelAndView display(@PathVariable("id") int id) {
+
+        Clients cdisplay = dao.getClientsById(id);
+
+        return new ModelAndView("clientdisplay", "id", cdisplay);
     }
 
+    /**
+     * Mapping for Posting Edited data from the Clients Form - contains error
+     * messages
+     *
+     * @param clients
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/clients/editsave", method = RequestMethod.POST)
     public ModelAndView editsave(@ModelAttribute("clients") @Valid Clients clients, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -133,49 +203,30 @@ public class ClientsController {
         return new ModelAndView("redirect:/clients/viewclients");
     }
 
-    @RequestMapping(value = "/clients/deleteclients/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
-        int r = dao.delete(id);
-
-        Message msg = null;
-        if (r == 1) {
-            msg = new Message(Message.Level.INFO, "Client/Prospect has been successfully deleted");
-        } else {
-            msg = new Message(Message.Level.ERROR, "Delete client/prospect failed");
-        }
-
-        request.getSession().setAttribute("message", msg);
-
-        return new ModelAndView("redirect:/clients/viewclients");
-    }
-
-//    @RequestMapping("/clients/clientdisplay")
-//    public ModelAndView clientdisplay(HttpServletRequest request) {
-//
-//        List<Clients> limit = dao.getClientsLimit();
-//
-//        HashMap<String, Object> context = new HashMap<String, Object>();
-//        context.put("limit", limit);
-//
-//        Message msg = (Message) request.getSession().getAttribute("message");
-//
-//        if (msg != null) {
-//            context.put("message", msg);
-//            request.getSession().removeAttribute("message");
-//        }
-//
-//        return new ModelAndView("clientdisplay", context);
-//    }
-
+    /**
+     * Initiate Clients Validator
+     *
+     * @param webDataBinder
+     */
     @InitBinder("clients")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(clientsValidator);
     }
 
+    /**
+     * Get Clients Validator
+     *
+     * @return
+     */
     public ClientsValidator getClientsValidator() {
         return clientsValidator;
     }
 
+    /**
+     * Set Clients Validator
+     *
+     * @param clientsValidator
+     */
     public void setClientsValidator(ClientsValidator clientsValidator) {
         this.clientsValidator = clientsValidator;
     }

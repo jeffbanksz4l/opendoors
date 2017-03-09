@@ -3,6 +3,8 @@
 
 <%@include file="header.jsp" %>
 
+
+
 <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Manage Interactions > Edit Interaction</b></h5>
 </header>
@@ -16,11 +18,11 @@
 
         <form:form method="POST" action="/OpenDoors/interactions/editsave" cssClass="w3-container" commandName="interactions">
             <form:hidden path="Clients_ID" />
+            <form:hidden path="InteractionsID" />
 
-           
-<!--
-        <div class="w3-padding-8">
-            <label><b>Interactions</b></label>
+            <!--
+                    <div class="w3-padding-8">
+                        <label><b>Interactions</b></label>
             <form:select path="interactionsID" cssClass="w3-select w3-border" items="${command.interactions}" />
         </div>
 
@@ -28,16 +30,6 @@
             <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
         </div>
             -->
-
-            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-            <link rel="stylesheet" href="/resources/demos/style.css">
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-            <script>
-                $(function () {
-                    $("#Date_Of_Contact").datepicker();
-                });
-            </script>
 
             <form:input path="Date_Of_Contact" cssClass="w3-input w3-border" placeholder="Date Of Contact"  />
             <form:errors path="Date_Of_Contact" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
@@ -61,6 +53,15 @@
 
         </form:form>
     </div>
-</div>
+</div>    
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="<c:url value="/media/jquery.datetimepicker.full.js" />" ></script>
+
+<script>
+    $(function () {
+        jQuery('#Date_Of_Contact').datetimepicker();
+    });
+</script>
 
 <%@include file="footer.jsp" %>

@@ -43,7 +43,6 @@
                 </td>
                 <td>
                     <a href="<c:url value="/users/editusers/${users.username}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
-                    <!-- <a href="<c:url value="/users/usersform/${users.username}" />"><button class="w3-btn w3-round w3-green">Add User</button></a> -->
                 </td>  
             </tr>  
         </c:forEach>  

@@ -21,44 +21,71 @@ public class ClientsDAO {
 
     JdbcTemplate template;
 
+    /**
+     *
+     */
     public static final Logger logger = Logger.getLogger(ClientsDAO.class.getName());
 
+    /**
+     * Setting the JDBC Template
+     *
+     * @param template
+     */
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
+    /**
+     * SQL Query for Saving Clients
+     *
+     * @param clients
+     * @return
+     */
     public int save(Clients clients) {
-        String sql = "INSERT INTO Clients (Customer,  Address_Line_1, Address_Line_2, City, State, Postal_Code, Email, Phone_1, Phone_2, Status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Clients (Customer,  Address_Line_1, Address_Line_2, "
+                + "City, State, Postal_Code, Email, Phone_1, Phone_2, Status) "
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Object[] values = {clients.getCustomer(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus()};
 
         return template.update(sql, values);
     }
 
+    /**
+     * SQL Query for Updating Clients
+     *
+     * @param clients
+     * @return
+     */
     public int update(Clients clients) {
-        String sql = "UPDATE Clients SET Customer = ?, Address_Line_1 = ?, Address_Line_2 = ?, City = ?, State = ?, Postal_Code = ?, Email = ?, Phone_1 = ?, Phone_2 = ?, Status = ? WHERE ClientsID = ?";
+        String sql = "UPDATE Clients SET Customer = ?, Address_Line_1 = ?, Address_Line_2 = ?, "
+                + "City = ?, State = ?, Postal_Code = ?, Email = ?, Phone_1 = ?, Phone_2 = ?, Status = ? "
+                + "WHERE ClientsID = ?";
 
         Object[] values = {clients.getCustomer(), clients.getAddress_Line_1(), clients.getAddress_Line_2(), clients.getCity(), clients.getState(), clients.getPostal_Code(), clients.getEmail(), clients.getPhone_1(), clients.getPhone_2(), clients.getStatus(), clients.getClientsID()};
 
         return template.update(sql, values);
     }
 
-    public int convert(Clients clients) {
-        String sql = "UPDATE Clients SET Status = Inactive WHERE ClientsID = ?";
-
-        Object[] values = {clients.getStatus(), clients.getClientsID()};
-
-        return template.update(sql, values);
-    }
-
-    public int delete(int id) {
-        String sql = "DELETE FROM Clients WHERE ClientsID = ?";
+    /**
+     * SQL Query for Converting the Status of Clients
+     *
+     * @param id
+     * @return
+     */
+    public int convert(int id) {
+        String sql = "UPDATE Clients SET Status = 'Inactive' WHERE ClientsID = ?";
 
         Object[] values = {id};
 
         return template.update(sql, values);
     }
 
+    /**
+     * SQL Query for Mapping the List of Clients
+     *
+     * @return
+     */
     public List<Clients> getClientsList() {
         return template.query("SELECT * FROM Clients", new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
@@ -79,12 +106,28 @@ public class ClientsDAO {
         });
     }
 
+    /**
+     * SQL Query for Mapping the Clients by ID
+     *
+     * @param id
+     * @return
+     */
     public Clients getClientsById(int id) {
         logger.info("Get Clients by ID: " + id);
-        String sql = "SELECT ClientsID, Customer, Address_Line_1, Address_Line_2, City, State, Postal_Code, Email, Phone_1, Phone_2, Status FROM Clients WHERE ClientsID = ?";
+        String sql = "SELECT ClientsID, Customer, Address_Line_1, Address_Line_2, "
+                + "City, State, Postal_Code, Email, Phone_1, Phone_2, Status "
+                + "FROM Clients "
+                + "WHERE ClientsID = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Clients>(Clients.class));
     }
 
+    /**
+     * SQL Query for Mapping the List of Clients for pagination
+     *
+     * @param start
+     * @param total
+     * @return
+     */
     public List<Clients> getClientsByPage(int start, int total) {
         String sql = "SELECT * FROM Clients LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Clients>() {
@@ -106,6 +149,11 @@ public class ClientsDAO {
         });
     }
 
+    /**
+     * SQL query for Getting the Clients Count
+     *
+     * @return
+     */
     public int getClientsCount() {
         String sql = "SELECT COUNT(ClientsID) AS crowcount FROM Clients";
         SqlRowSet rs = template.queryForRowSet(sql);
@@ -116,7 +164,12 @@ public class ClientsDAO {
 
         return 1;
     }
-    
+
+    /**
+     * SQL query for Listing the Clients for pagination
+     *
+     * @return
+     */
     public List<Clients> getClientsLimit() {
         String sql = "SELECT * FROM Clients ORDER BY ClientsID DESC LIMIT 5";
         return template.query(sql, new RowMapper<Clients>() {

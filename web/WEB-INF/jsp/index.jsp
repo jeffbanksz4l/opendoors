@@ -22,15 +22,18 @@
             </div>
         </div>
 
-        <div class="w3-quarter">
-            <div class="w3-container w3-orange w3-text-white w3-padding-16">
-                <div class="w3-left"><i class="fa fa-user-plus w3-xxxlarge"></i></div>
-                <div class="w3-right"></div>
-                <div class="w3-clear"></div>
-                <h3>Total Users</h3>
-                <h3>${urowcount}</h3>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <c:url value="/j_spring_security_logout" var="logoutUrl" />
+            <div class="w3-quarter">
+                <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-user-plus w3-xxxlarge"></i></div>
+                    <div class="w3-right"></div>
+                    <div class="w3-clear"></div>
+                    <h3>Total Users</h3>
+                    <h3>${urowcount}</h3>
+                </div>
             </div>
-        </div>
+        </sec:authorize>
 
         <div class="w3-quarter">
             <div class="w3-container w3-blue w3-padding-16">
@@ -74,10 +77,10 @@
 
                             </div>
                             <script>
-// Get the modal
+                                // Get the modal
                                 var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
+                                // When the user clicks anywhere outside of the modal, close it
                                 window.onclick = function (event) {
                                     if (event.target == modal) {
                                         modal.style.display = "none";
@@ -90,8 +93,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div class="w3-row-padding w3-margin-bottom">
 

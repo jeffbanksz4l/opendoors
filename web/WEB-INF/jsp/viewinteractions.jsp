@@ -34,7 +34,7 @@
         <c:forEach var="interactions" items="${list}">   
             <tr>  
                 <td>${interactions.interactionsID}</td>
-                <td>${interactions.clients_ID}</td>
+                <td>${interactions.clients.customer}</td>
                 <td>${interactions.date_Of_Contact}</td>
                 <td>${interactions.contact_First_Name} ${interactions.contact_Last_Name}</td>
                 <td>${interactions.contact_Type}</td>
@@ -42,7 +42,6 @@
                 <td>
                     <a href="<c:url value="/interactions/editinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
                     <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-text-black" style="background-color: #dbd6af" onclick="return confirm('Are you sure you want to delete this Interaction?');">Delete</button></a>
-                    <!-- <a href="<c:url value="/interactions/interactionsform/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-gray">Add Interaction</button></a> -->
                 </td>  
             </tr>  
         </c:forEach>  

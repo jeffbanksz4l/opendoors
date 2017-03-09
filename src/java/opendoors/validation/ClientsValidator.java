@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import opendoors.objects.Clients;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -18,11 +17,23 @@ public class ClientsValidator implements Validator {
 
     private static final Logger logger = Logger.getLogger(ClientsValidator.class.getName());
 
+    /**
+     * Boolean to check support
+     *
+     * @param clazz
+     * @return
+     */
     @Override
     public boolean supports(Class<?> clazz) {
         return Clients.class.isAssignableFrom(clazz);
     }
 
+    /**
+     * Validator for Clients
+     *
+     * @param target
+     * @param errors
+     */
     @Override
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Customer", "clients.Customer.required");

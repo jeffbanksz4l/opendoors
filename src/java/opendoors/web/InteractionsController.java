@@ -18,8 +18,6 @@ import opendoors.validation.InteractionsValidator;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
@@ -41,6 +39,11 @@ public class InteractionsController {
 
     private static final Logger logger = Logger.getLogger(InteractionsController.class.getName());
 
+    /**
+     * Mapping for showing the Interaction Form
+     *
+     * @return
+     */
     @RequestMapping("/interactions/interactionsform")
     public ModelAndView showform() {
         Interactions interactions = new Interactions();
@@ -49,6 +52,12 @@ public class InteractionsController {
         return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
+    /**
+     * Mapping for showing the Users Form with Client ID
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping("/interactions/interactionsform/{id}")
     public ModelAndView showformWithClients(@PathVariable int id) {
         Clients clients = adao.getClientsById(id);
@@ -63,6 +72,14 @@ public class InteractionsController {
         return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
+    /**
+     * Mapping for Posting data from the Interaction Form - contains error
+     * messages
+     *
+     * @param interactions
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/interactions/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("interactions") Interactions interactions, HttpServletRequest request) {
         int r = dao.save(interactions);
@@ -79,12 +96,25 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
+    /**
+     * Mapping to View Interactions
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/interactions/viewinteractions")
     public ModelAndView viewinteractions(HttpServletRequest request) {
 
         return this.viewinteractions(1, request);
     }
 
+    /**
+     * Mapping the View Interactions with pagination - contains error messages
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
     @RequestMapping("/interactions/viewinteractions/{pageid}")
     public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
@@ -114,6 +144,12 @@ public class InteractionsController {
         return new ModelAndView("viewinteractions", context);
     }
 
+    /**
+     * Mapping to Edit Interactions based on Interaction ID
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/interactions/editinteractions/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Interactions interactions = dao.getInteractionsById(id);
@@ -123,6 +159,14 @@ public class InteractionsController {
         return new ModelAndView("interactionseditform", "interactions", interactions);
     }
 
+    /**
+     * Mapping for Posting Edited data from the Users Form - contains error
+     * messages
+     *
+     * @param interactions
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/interactions/editsave", method = RequestMethod.POST)
     public ModelAndView editsave(@ModelAttribute("interactions") Interactions interactions, HttpServletRequest request) {
         int r = dao.update(interactions);
@@ -139,6 +183,13 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
+    /**
+     * Mapping for Deleting data an Interaction - contains error messages
+     *
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/interactions/deleteinteractions/{id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
         int r = dao.delete(id);
@@ -155,15 +206,30 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
+    /**
+     * Initiate Interaction Validator
+     *
+     * @param webDataBinder
+     */
     @InitBinder("interactions")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(interactionsValidator);
     }
 
+    /**
+     * Get Interaction Validator
+     *
+     * @return
+     */
     public InteractionsValidator getInteractionsValidator() {
         return interactionsValidator;
     }
 
+    /**
+     * Set Interaction Validator
+     *
+     * @param interactionsValidator
+     */
     public void setInteractionsValidator(InteractionsValidator interactionsValidator) {
         this.interactionsValidator = interactionsValidator;
     }

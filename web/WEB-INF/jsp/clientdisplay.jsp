@@ -9,38 +9,58 @@
 
 <div class="w3-row-padding w3-margin-bottom">
 
-    <div class="w3-container w3-text-white" style="background-color: #60755b">
-        <h2>Client/Prospect Information</h2>
-    </div>
 
-    <!-- <input type="hidden" id="clientsID" name="clientsID"> -->
-    
-    <form:form method="POST" action="/OpenDoors/clients/clientview" cssClass="w3-container" commandName="clients">
-            <form:hidden path="clientsID"  />
+    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
+        <tr>
+            <th>Customer</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>  
 
-
-    <div class="w3-row-padding w3-margin-bottom">
-        <div class="w3-third w3-center w3-cyan">
-            <p>Customer</p>    
-        </div>
-        <div class="w3-twothird w3-center w3-sand">
-            <p>${clients.customer}</p>
-        </div>
-    </div>
-    <div class="w3-row-padding w3-margin-bottom">
-        <div class="w3-third w3-center w3-teal">
-            <p>Address Line 1</p>    
-        </div>
-        <div class="w3-twothird w3-center w3-khaki">
-            <p>${clients.address_Line_1}</p>
-        </div>
-    </div>
-    
-</form:form>    
-    
+        <c:forEach var="clients" items="${list}">   
+            <tr>
+                <td>${clients.customer}</td>
+                <td>${clients.status}</td>
+                <td>
+                    <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
+                    <a href="<c:url value="/clients/clientdisplay/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Display</button></a>
+                    <a href="<c:url value="/clients/convert/${clients.clientsID}" />"><button class="w3-btn w3-round w3-text-black" style="background-color: #dbd6af">Change to Inactive</button></a>
+                    <a href="<c:url value="/interactions/interactionsform/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #5b7885">Add Interaction</button></a>
+                </td>  
+            </tr>  
+        </c:forEach>  
+    </table>
 
     <!-- 
+        <div class="w3-container w3-text-white" style="background-color: #60755b">
+            <h2>Client/Prospect Information</h2>
+        </div>
     
+    <!-- <input type="hidden" id="clientsID" name="clientsID"> -->
+
+    <form:form method="POST" action="/OpenDoors/clients/clientview" cssClass="w3-container" commandName="clients">
+        <form:hidden path="clientsID"  />
+
+        <div class="w3-row-padding w3-margin-bottom">
+            <div class="w3-third w3-center w3-cyan">
+                <p>Customer</p>    
+            </div>
+            <div class="w3-twothird w3-center w3-sand">
+                <p>${clients.customer}</p>
+            </div>
+        </div>
+        <div class="w3-row-padding w3-margin-bottom">
+            <div class="w3-third w3-center w3-teal">
+                <p>Address Line 1</p>    
+            </div>
+            <div class="w3-twothird w3-center w3-khaki">
+                <p>${clients.address_Line_1}</p>
+            </div>
+        </div>
+
+    </form:form>
+
+    <!-- 
     <div class="w3-padding-8" style="background-color: #dbd6af">
         <ul>
             <li>Customer: ${clients.customer}</li>
@@ -48,8 +68,8 @@
         </ul>
     </div>
     -->
+
     <!--
-    
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
     <c:set target="clientID">
         <tr>
@@ -80,7 +100,6 @@
         </tr>
     </c:forEach>
 </table> -->
-
 
 </div>
 

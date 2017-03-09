@@ -16,52 +16,87 @@ public class Users implements Serializable {
     private Boolean Enabled;
     private List<String> Roles;
     private Map<String, String> RolesMap;
-//    private Map<String, String> EnabledMap;
 
+    /**
+     * Getting Username
+     *
+     * @return
+     */
     public String getUsername() {
         return Username;
     }
 
+    /**
+     * Setting Username
+     *
+     * @param Username
+     */
     public void setUsername(String Username) {
         this.Username = Username;
     }
 
+    /**
+     * Getting Password
+     *
+     * @return
+     */
     public String getPassword() {
         return Password;
     }
 
+    /**
+     * Setting Password
+     *
+     * @param Password
+     */
     public void setPassword(String Password) {
         this.Password = Password;
     }
 
+    /**
+     * Getting Enabled
+     *
+     * @return
+     */
     public Boolean getEnabled() {
         if (Enabled == null) {
             return false;
         }
-//        if (!Enabled == true) {
-//            return Enabled = false;
-//        } else {
-//            return Enabled;
-//        }
         return Enabled;
     }
 
+    /**
+     * Setting Enabled
+     *
+     * @param Enabled
+     */
     public void setEnabled(boolean Enabled) {
-//        if (!Enabled == true) {
-//            this.Enabled = Enabled;
-//        }
-//        this.Enabled = Enabled;
         this.Enabled = Enabled;
     }
 
+    /**
+     * Getting User Roles
+     *
+     * @return
+     */
     public List<String> getRoles() {
         return Roles;
     }
 
+    /**
+     * Setting User Roles
+     *
+     * @param Roles
+     */
     public void setRoles(List<String> Roles) {
         this.Roles = Roles;
     }
 
+    /**
+     * Getting a Map of the User Roles
+     *
+     * @return
+     */
     public Map<String, String> getRolesMap() {
 
         RolesMap = new LinkedHashMap<String, String>();
@@ -71,6 +106,11 @@ public class Users implements Serializable {
         return RolesMap;
     }
 
+    /**
+     * Sending data to a String
+     *
+     * @return
+     */
     public String toString() {
         StringBuffer buffer = new StringBuffer();
 //        buffer.append("Username: " + this.Username + ";");

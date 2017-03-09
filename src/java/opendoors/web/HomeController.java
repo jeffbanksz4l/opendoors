@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import opendoors.objects.Clients;
 import opendoors.objects.Interactions;
-import opendoors.objects.Users;
 import opendoors.repository.ClientsDAO;
 import opendoors.repository.InteractionsDAO;
 import opendoors.repository.UsersDAO;
@@ -25,10 +24,15 @@ public class HomeController {
 
     @Autowired
     InteractionsDAO idao;
-    
+
     @Autowired
     UsersDAO udao;
 
+    /**
+     * Mapping to View Clients
+     *
+     * @return
+     */
     @RequestMapping("/")
     public ModelAndView viewclients() {
 
@@ -39,7 +43,7 @@ public class HomeController {
 
         List<Interactions> ilimit = idao.getInteractionsLimit();
         context.put("ilimit", ilimit);
-        
+
         context.put("crowcount", cdao.getClientsCount());
         context.put("irowcount", idao.getInteractionsCount());
         context.put("urowcount", udao.getUsersCount());

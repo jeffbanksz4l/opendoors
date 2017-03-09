@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import opendoors.objects.Users;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -18,11 +17,23 @@ public class UsersValidator implements Validator {
 
     private static final Logger logger = Logger.getLogger(UsersValidator.class.getName());
 
+    /**
+     * Boolean to check support
+     *
+     * @param clazz
+     * @return
+     */
     @Override
     public boolean supports(Class<?> clazz) {
         return Users.class.isAssignableFrom(clazz);
     }
 
+    /**
+     * Validator for Users
+     *
+     * @param target
+     * @param errors
+     */
     @Override
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Username", "users.Username.required");
@@ -45,14 +56,5 @@ public class UsersValidator implements Validator {
         if (!users.getPassword().matches("^[A-Za-z0-9]*$")) {
             errors.rejectValue("Password", "users.Password.pattern");
         }
-
-//        if (users.getEnabled().length() > 1) {
-//            errors.rejectValue("Enabled", "users.Enabled.length");
-//        }
-//
-//        if (!users.getEnabled().matches("^[E||U]*$")) {
-//            errors.rejectValue("Enabled", "users.Enabled.pattern");
-//        }
     }
-
 }

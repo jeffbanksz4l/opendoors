@@ -2,7 +2,6 @@ package opendoors.objects;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,94 +27,209 @@ public class Clients implements Serializable {
     private Interactions interactions;
     private Map<Integer, String> interactionMap;
 
+    /**
+     * Getting the Clients ID
+     *
+     * @return
+     */
     public int getClientsID() {
         return ClientsID;
     }
 
+    /**
+     * Setting the Clients ID
+     *
+     * @param ClientsID
+     */
     public void setClientsID(int ClientsID) {
         this.ClientsID = ClientsID;
     }
 
+    /**
+     * Getting the Customer
+     *
+     * @return
+     */
     public String getCustomer() {
         return Customer;
     }
 
+    /**
+     * Setting the Customer
+     *
+     * @param Customer
+     */
     public void setCustomer(String Customer) {
         this.Customer = Customer;
     }
 
+    /**
+     * Getting the Address Line 1
+     *
+     * @return
+     */
     public String getAddress_Line_1() {
         return Address_Line_1;
     }
 
+    /**
+     * Setting the Address Line 1
+     *
+     * @param Address_Line_1
+     */
     public void setAddress_Line_1(String Address_Line_1) {
         this.Address_Line_1 = Address_Line_1;
     }
 
+    /**
+     * Getting the Address Line 2
+     *
+     * @return
+     */
     public String getAddress_Line_2() {
         return Address_Line_2;
     }
 
+    /**
+     * Setting the Address Line 2
+     *
+     * @param Address_Line_2
+     */
     public void setAddress_Line_2(String Address_Line_2) {
         this.Address_Line_2 = Address_Line_2;
     }
 
+    /**
+     * Getting the City
+     *
+     * @return
+     */
     public String getCity() {
         return City;
     }
 
+    /**
+     * Setting the City
+     *
+     * @param City
+     */
     public void setCity(String City) {
         this.City = City;
     }
 
+    /**
+     * Getting the State
+     *
+     * @return
+     */
     public String getState() {
         return State;
     }
 
+    /**
+     * Setting the State
+     *
+     * @param State
+     */
     public void setState(String State) {
         this.State = State;
     }
 
+    /**
+     * Getting the Postal Code
+     *
+     * @return
+     */
     public String getPostal_Code() {
         return Postal_Code;
     }
 
+    /**
+     * Setting the Postal Code
+     *
+     * @param Postal_Code
+     */
     public void setPostal_Code(String Postal_Code) {
         this.Postal_Code = Postal_Code;
     }
 
+    /**
+     * Getting the Email
+     *
+     * @return
+     */
     public String getEmail() {
         return Email;
     }
 
+    /**
+     * Setting the Email
+     *
+     * @param Email
+     */
     public void setEmail(String Email) {
         this.Email = Email;
     }
 
+    /**
+     * Getting the Phone 1
+     *
+     * @return
+     */
     public String getPhone_1() {
         return Phone_1;
     }
 
+    /**
+     * Setting the Phone 1
+     *
+     * @param Phone_1
+     */
     public void setPhone_1(String Phone_1) {
         this.Phone_1 = Phone_1;
     }
 
+    /**
+     * Getting the Phone 2
+     *
+     * @return
+     */
     public String getPhone_2() {
         return Phone_2;
     }
 
+    /**
+     * Setting the Phone 2
+     *
+     * @param Phone_2
+     */
     public void setPhone_2(String Phone_2) {
         this.Phone_2 = Phone_2;
     }
 
+    /**
+     * Getting the Status
+     *
+     * @return
+     */
     public String getStatus() {
         return Status;
     }
 
+    /**
+     * Setting the Status
+     *
+     * @param Status
+     */
     public void setStatus(String Status) {
         this.Status = Status;
     }
 
+    /**
+     * Getting a Map of the Clients Status
+     *
+     * @return
+     */
     public Map<String, String> getStatusMap() {
 
         StatusMap = new LinkedHashMap<String, String>();
@@ -126,6 +240,11 @@ public class Clients implements Serializable {
         return StatusMap;
     }
 
+    /**
+     * Getting a Map of the States
+     *
+     * @return
+     */
     public Map<String, String> getStatesMap() {
 
         this.StatesMap = new LinkedHashMap<String, String>();
@@ -198,21 +317,38 @@ public class Clients implements Serializable {
         return StatesMap;
     }
 
+    /**
+     * Getting the Interactions
+     *
+     * @return
+     */
     public Interactions getInteractions() {
         return interactions;
     }
 
+    /**
+     * Setting the Interactions
+     *
+     * @param interactions
+     */
     public void setInteractions(Interactions interactions) {
         this.interactions = interactions;
     }
 
+    /**
+     * Getting a Map of the Interactions
+     *
+     * @return
+     */
     public Map<Integer, String> getInteractionMap() {
         return interactionMap;
     }
 
-//    public void setInteraction(Map<Integer, String> interactionMap) {
-//        this.interactionMap = interactionMap;
-//    }
+    /**
+     * Sending data to a String
+     *
+     * @return
+     */
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append(this.Customer + " " + this.Customer);

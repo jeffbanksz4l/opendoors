@@ -17,15 +17,16 @@ public class Message implements Serializable {
     public enum Level {
 
         /**
-         *
+         * Level ERROR
          */
         ERROR,
         /**
-         *
+         * Level INFO
          */
         INFO;
 
         /**
+         * Getting String
          *
          * @return
          */
@@ -35,13 +36,14 @@ public class Message implements Serializable {
     }
 
     /**
-     *
+     * String Message
      */
     public Message() {
 
     }
 
     /**
+     * Message
      *
      * @param type
      * @param message
@@ -52,6 +54,7 @@ public class Message implements Serializable {
     }
 
     /**
+     * Getting Message Type
      *
      * @return
      */
@@ -60,6 +63,7 @@ public class Message implements Serializable {
     }
 
     /**
+     * Setting Message Type
      *
      * @param type
      */
@@ -68,6 +72,7 @@ public class Message implements Serializable {
     }
 
     /**
+     * Getting Message
      *
      * @return
      */
@@ -76,6 +81,7 @@ public class Message implements Serializable {
     }
 
     /**
+     * Setting Message
      *
      * @param message
      */
@@ -84,6 +90,7 @@ public class Message implements Serializable {
     }
 
     /**
+     * Sending data to a String
      *
      * @return
      */

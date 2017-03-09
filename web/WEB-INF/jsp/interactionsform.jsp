@@ -15,6 +15,7 @@
         </div>
 
         <form:form method="post" action="/OpenDoors/interactions/save" cssClass="w3-container" commandName="interactions">
+
             <div class="w3-padding-8">
 
                 <c:choose>
@@ -23,7 +24,7 @@
                         <div class="w3-padding-8">
                             <div class="w3-panel w3-border w3-white">
                                 <p>${interactions.clients}</p>
-                                <p>${clients.customer}</p>
+
                             </div>
                         </div>
                     </c:when>
@@ -39,6 +40,7 @@
                     </c:otherwise>
                 </c:choose>
 
+                <!--
                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                 <link rel="stylesheet" href="/resources/demos/style.css">
                 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -47,7 +49,7 @@
                     $(function () {
                         $("#Date_Of_Contact").datepicker();
                     });
-                </script>
+                </script> -->
 
                 <form:input path="Date_Of_Contact" cssClass="w3-input w3-border" placeholder="Date Of Contact"  />
                 <form:errors path="Date_Of_Contact" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
@@ -57,30 +59,12 @@
 
                 <form:input path="Contact_Last_Name" cssClass="w3-input w3-border" placeholder="Contact Last Name"  />
                 <form:errors path="Contact_Last_Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
-                
+
                 <form:select path="Contact_Type" cssClass="w3-input w3-border" >
                     <form:options items="${interactions.contact_TypeMap}" />
                 </form:select>
 
-
                 <form:textarea rows="10" path="Conversations" cssClass="w3-input w3-border" placeholder="Conversations"  />
-
-                <!-- 
-                                <div class="w3-container">
-                                    <h2>Conversations</h2>
-                                    <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-btn">Conversation</button>
-                
-                                    <div id="id01" class="w3-modal">
-                                        <div class="w3-modal-content">
-                                            <div class="w3-container">
-                                                <span onclick="document.getElementById('id01').style.display = 'none'" class="w3-closebtn">&times;</span>
-                                                <p>Some text. Some text. Some text.</p>
-                                                <p>Some text. Some text. Some text.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                -->
                 <form:errors path="Conversations" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
                 </div>
 
@@ -113,5 +97,14 @@
         </form:form>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="<c:url value="/media/jquery.datetimepicker.full.js" />" ></script>
+
+<script>
+    $(function () {
+        jQuery('#Date_Of_Contact').datetimepicker();
+    });
+</script>
 
 <%@include file="footer.jsp" %>

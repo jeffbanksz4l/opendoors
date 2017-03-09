@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class SecurityController {
 
     /**
+     * Mapping for Getting data to Authenticate - contains error messages
      *
      * @param error
      * @param logout
@@ -44,6 +45,7 @@ public class SecurityController {
     }
 
     /**
+     * Returning 403 Error if Access is Denied
      *
      * @return
      */
