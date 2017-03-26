@@ -87,7 +87,57 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getClientsList() {
-        return template.query("SELECT * FROM Clients", new RowMapper<Clients>() {
+        return template.query("SELECT * FROM Clients WHERE Status = 'Client'", new RowMapper<Clients>() {
+            public Clients mapRow(ResultSet rs, int row) throws SQLException {
+                Clients c = new Clients();
+                c.setClientsID(rs.getInt("Clients ID"));
+                c.setCustomer(rs.getString("Customer"));
+                c.setAddress_Line_1(rs.getString("Address Line 1"));
+                c.setAddress_Line_2(rs.getString("Address Line 2"));
+                c.setCity(rs.getString("City"));
+                c.setState(rs.getString("State"));
+                c.setPostal_Code(rs.getString("Postal Code"));
+                c.setEmail(rs.getString("Email"));
+                c.setPhone_1(rs.getString("Phone 1"));
+                c.setPhone_2(rs.getString("Phone 2"));
+                c.setStatus(rs.getString("Status"));
+                return c;
+            }
+        });
+    }
+
+    /**
+     * SQL Query for Mapping the List of Prospects
+     *
+     * @return
+     */
+    public List<Clients> getProspectsList() {
+        return template.query("SELECT * FROM Clients WHERE Status = 'Prospect'", new RowMapper<Clients>() {
+            public Clients mapRow(ResultSet rs, int row) throws SQLException {
+                Clients p = new Clients();
+                p.setClientsID(rs.getInt("Clients ID"));
+                p.setCustomer(rs.getString("Customer"));
+                p.setAddress_Line_1(rs.getString("Address Line 1"));
+                p.setAddress_Line_2(rs.getString("Address Line 2"));
+                p.setCity(rs.getString("City"));
+                p.setState(rs.getString("State"));
+                p.setPostal_Code(rs.getString("Postal Code"));
+                p.setEmail(rs.getString("Email"));
+                p.setPhone_1(rs.getString("Phone 1"));
+                p.setPhone_2(rs.getString("Phone 2"));
+                p.setStatus(rs.getString("Status"));
+                return p;
+            }
+        });
+    }
+
+    /**
+     * SQL Query for Mapping the List of Inactives
+     *
+     * @return
+     */
+    public List<Clients> getInactivesList() {
+        return template.query("SELECT * FROM Clients WHERE Status = 'Inactive'", new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
                 c.setClientsID(rs.getInt("Clients ID"));
@@ -129,7 +179,63 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getClientsByPage(int start, int total) {
-        String sql = "SELECT * FROM Clients LIMIT " + (start - 1) + "," + total;
+        String sql = "SELECT * FROM Clients WHERE Status = 'Client' LIMIT " + (start - 1) + "," + total;
+        return template.query(sql, new RowMapper<Clients>() {
+            public Clients mapRow(ResultSet rs, int row) throws SQLException {
+                Clients c = new Clients();
+                c.setClientsID(rs.getInt(1));
+                c.setCustomer(rs.getString(2));
+                c.setAddress_Line_1(rs.getString(3));
+                c.setAddress_Line_2(rs.getString(4));
+                c.setCity(rs.getString(5));
+                c.setState(rs.getString(6));
+                c.setPostal_Code(rs.getString(7));
+                c.setEmail(rs.getString(8));
+                c.setPhone_1(rs.getString(9));
+                c.setPhone_2(rs.getString(10));
+                c.setStatus(rs.getString(11));
+                return c;
+            }
+        });
+    }
+
+    /**
+     * SQL Query for Mapping the List of Prospects for pagination
+     *
+     * @param start
+     * @param total
+     * @return
+     */
+    public List<Clients> getProspectsByPage(int start, int total) {
+        String sql = "SELECT * FROM Clients WHERE Status = 'Prospect' LIMIT " + (start - 1) + "," + total;
+        return template.query(sql, new RowMapper<Clients>() {
+            public Clients mapRow(ResultSet rs, int row) throws SQLException {
+                Clients c = new Clients();
+                c.setClientsID(rs.getInt(1));
+                c.setCustomer(rs.getString(2));
+                c.setAddress_Line_1(rs.getString(3));
+                c.setAddress_Line_2(rs.getString(4));
+                c.setCity(rs.getString(5));
+                c.setState(rs.getString(6));
+                c.setPostal_Code(rs.getString(7));
+                c.setEmail(rs.getString(8));
+                c.setPhone_1(rs.getString(9));
+                c.setPhone_2(rs.getString(10));
+                c.setStatus(rs.getString(11));
+                return c;
+            }
+        });
+    }
+
+    /**
+     * SQL Query for Mapping the List of Inactives for pagination
+     *
+     * @param start
+     * @param total
+     * @return
+     */
+    public List<Clients> getInactivesByPage(int start, int total) {
+        String sql = "SELECT * FROM Clients WHERE Status = 'Inactive' LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
@@ -155,7 +261,7 @@ public class ClientsDAO {
      * @return
      */
     public int getClientsCount() {
-        String sql = "SELECT COUNT(ClientsID) AS crowcount FROM Clients";
+        String sql = "SELECT COUNT(ClientsID) AS crowcount FROM Clients WHERE Status = 'Client'";
         SqlRowSet rs = template.queryForRowSet(sql);
 
         if (rs.next()) {
@@ -166,12 +272,69 @@ public class ClientsDAO {
     }
 
     /**
-     * SQL query for Listing the Clients for pagination
+     * SQL query for Getting the Prospects Count
+     *
+     * @return
+     */
+    public int getProspectsCount() {
+        String sql = "SELECT COUNT(ClientsID) AS prowcount FROM Clients WHERE Status = 'Prospect'";
+        SqlRowSet rs = template.queryForRowSet(sql);
+
+        if (rs.next()) {
+            return rs.getInt("prowcount");
+        }
+
+        return 1;
+    }
+
+    /**
+     * SQL query for Getting the Inactives Count
+     *
+     * @return
+     */
+    public int getInactivesCount() {
+        String sql = "SELECT COUNT(ClientsID) AS xrowcount FROM Clients WHERE Status = 'Inactive'";
+        SqlRowSet rs = template.queryForRowSet(sql);
+
+        if (rs.next()) {
+            return rs.getInt("xrowcount");
+        }
+
+        return 1;
+    }
+    /**
+     * SQL query for Listing the Clients for Dashboard
      *
      * @return
      */
     public List<Clients> getClientsLimit() {
-        String sql = "SELECT * FROM Clients ORDER BY ClientsID DESC LIMIT 5";
+        String sql = "SELECT * FROM Clients WHERE Status = 'Client' ORDER BY ClientsID DESC LIMIT 5";
+        return template.query(sql, new RowMapper<Clients>() {
+            public Clients mapRow(ResultSet rs, int row) throws SQLException {
+                Clients c = new Clients();
+                c.setClientsID(rs.getInt(1));
+                c.setCustomer(rs.getString(2));
+                c.setAddress_Line_1(rs.getString(3));
+                c.setAddress_Line_2(rs.getString(4));
+                c.setCity(rs.getString(5));
+                c.setState(rs.getString(6));
+                c.setPostal_Code(rs.getString(7));
+                c.setEmail(rs.getString(8));
+                c.setPhone_1(rs.getString(9));
+                c.setPhone_2(rs.getString(10));
+                c.setStatus(rs.getString(11));
+                return c;
+            }
+        });
+    }
+
+    /**
+     * SQL query for Listing the Prospects for Dashboard
+     *
+     * @return
+     */
+    public List<Clients> getProspectsLimit() {
+        String sql = "SELECT * FROM Clients WHERE Status = 'Prospect' ORDER BY ClientsID DESC LIMIT 5";
         return template.query(sql, new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();

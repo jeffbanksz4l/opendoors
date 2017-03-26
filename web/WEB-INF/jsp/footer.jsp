@@ -1,8 +1,8 @@
 <!-- Footer -->
 <footer class="w3-container w3-padding-16">
-    <i class="fa fa-github fa-fw w3-large"></i>
-    <i class="fa fa-linkedin-square fa-fw w3-large"></i>
-    <i class="fa fa-envelope-square fa-fw w3-large"></i>
+    <i class="fa fa-github fa-fw w3-large w3-hover-white" onclick="window.open('https://github.com/jeffbanksz4l/opendoors')"></i>
+    <i class="fa fa-linkedin-square fa-fw w3-large w3-hover-white" onclick="window.open('https://www.linkedin.com/in/jeffreywbanks')"></i>
+    <i class="fa fa-envelope-square fa-fw w3-large w3-hover-white" onclick="parent.location = ('mailto:jeffbanksz4l@gmail.com')"></i>
     <p>Copyright <i class="fa fa-copyright fa-fw"></i> Jeffrey Banks</p>
 </footer>
 

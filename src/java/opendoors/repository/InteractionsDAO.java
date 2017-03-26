@@ -46,7 +46,9 @@ public class InteractionsDAO {
                 + "Contact_Last_Name, Contact_Type, Conversations) "
                 + "values (?, ?, ?, ?, ?, ?)";
 
-        Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(), interactions.getContact_First_Name(), interactions.getContact_Last_Name(), interactions.getContact_Type(), interactions.getConversations()};
+        Object[] values = {interactions.getClients_ID(), interactions.getDate_Of_Contact(),
+            interactions.getContact_First_Name(), interactions.getContact_Last_Name(),
+            interactions.getContact_Type(), interactions.getConversations()};
 
         logger.info("Interactions DAO save values: " + values);
 

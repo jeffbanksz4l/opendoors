@@ -90,6 +90,39 @@ public class ClientsController {
     }
 
     /**
+     * Mapping to View Prospects
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/clients/viewprospects")
+    public ModelAndView viewprospects(HttpServletRequest request) {
+        return this.viewprospects(1, request);
+    }
+
+    /**
+     * Mapping to View Inactives
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/clients/viewinactives")
+    public ModelAndView viewinactives(HttpServletRequest request) {
+        return this.viewinactives(1, request);
+    }
+
+//    /**
+//     * Mapping to View Details
+//     *
+//     * @param request
+//     * @return
+//     */
+//    @RequestMapping("/clients/viewdetails")
+//    public ModelAndView viewdetails(HttpServletRequest request) {
+//        return this.viewdetails(1, request);
+//    }
+
+    /**
      * Mapping the Convert the status of existing Clients/Prospects to Inactive
      * - contains error messages
      *
@@ -149,6 +182,76 @@ public class ClientsController {
     }
 
     /**
+     * Mapping the View Prospects with pagination - contains error messages
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
+    @RequestMapping("/clients/viewprospects/{pageid}")
+    public ModelAndView viewprospects(@PathVariable int pageid, HttpServletRequest request) {
+        int total = 10;
+        int start = 1;
+        if (pageid != 1) {
+            start = (pageid - 1) * total + 1;
+        }
+
+        List<Clients> list = dao.getProspectsByPage(start, total);
+
+        HashMap<String, Object> context = new HashMap<String, Object>();
+        context.put("list", list);
+
+        int count = dao.getProspectsCount();
+        context.put("pages", Math.ceil((float) count / (float) total));
+
+        context.put("page", pageid);
+
+        Message msg = (Message) request.getSession().getAttribute("message");
+
+        if (msg != null) {
+            context.put("message", msg);
+            request.getSession().removeAttribute("message");
+        }
+
+        return new ModelAndView("viewprospects", context);
+    }
+
+    /**
+     * Mapping the View Inactives with pagination - contains error messages
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
+    @RequestMapping("/clients/viewinactives/{pageid}")
+    public ModelAndView viewinactives(@PathVariable int pageid, HttpServletRequest request) {
+        int total = 10;
+        int start = 1;
+        if (pageid != 1) {
+            start = (pageid - 1) * total + 1;
+        }
+
+        List<Clients> list = dao.getInactivesByPage(start, total);
+
+        HashMap<String, Object> context = new HashMap<String, Object>();
+        context.put("list", list);
+
+        int count = dao.getInactivesCount();
+        context.put("pages", Math.ceil((float) count / (float) total));
+
+        context.put("page", pageid);
+
+        Message msg = (Message) request.getSession().getAttribute("message");
+
+        if (msg != null) {
+            context.put("message", msg);
+            request.getSession().removeAttribute("message");
+        }
+
+        return new ModelAndView("viewinactives", context);
+    }
+
+    /**
      * Mapping to Edit Clients based on Clients ID
      *
      * @param id
@@ -166,12 +269,12 @@ public class ClientsController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/clients/clientdisplay/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/clients/viewdetails/{id}", method = RequestMethod.GET)
     public ModelAndView display(@PathVariable("id") int id) {
 
         Clients cdisplay = dao.getClientsById(id);
 
-        return new ModelAndView("clientdisplay", "id", cdisplay);
+        return new ModelAndView("viewdetails", "id", cdisplay);
     }
 
     /**

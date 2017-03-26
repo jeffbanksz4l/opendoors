@@ -38,7 +38,6 @@ public class UsersValidator implements Validator {
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Username", "users.Username.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Password", "users.Password.required");
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Enabled", "users.Enabled.required");
 
         Users users = (Users) target;
         if (users.getUsername().length() > 45) {

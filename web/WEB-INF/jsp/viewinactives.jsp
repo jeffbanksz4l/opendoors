@@ -1,10 +1,10 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 
 <%@ include file="header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Clients </b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Inactives </b></h5>
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
@@ -45,7 +45,7 @@
     <div class="w3-padding-8">
         <ul class="w3-pagination">
             <c:forEach begin="1" end="${pages}" varStatus="p">  
-                <li><a class="<c:if test="${p.index eq page}">w3-gray</c:if>" href="<c:url value="/clients/viewclients/${p.index}" />">${p.index}</a></li>
+                <li><a class="<c:if test="${p.index eq page}">w3-gray</c:if>" href="<c:url value="/clients/viewinactives/${p.index}" />">${p.index}</a></li>
                 </c:forEach>
         </ul>
     </div>

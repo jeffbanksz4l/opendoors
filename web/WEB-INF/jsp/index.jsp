@@ -14,10 +14,13 @@
     <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-quarter">
             <div class="w3-container w3-padding-16" style="background-color: #4c90b1">
-                <div class="w3-left"><i class="fa fa-info w3-xxxlarge w3-text-white"></i></div>
+                <div class="w3-left"><i class="fa fa-info w3-xxxlarge"></i></div>
                 <div class="w3-right"></div>
                 <div class="w3-clear"></div>
                 <h3>${crowcount} - Clients</h3>
+                <!--
+                <h3>${prowcount} - Prospects</h3>
+                -->
                 <h3>${irowcount} - Interactions</h3>
             </div>
         </div>
@@ -25,7 +28,7 @@
         <sec:authorize access="hasRole('ROLE_ADMIN')">
             <c:url value="/j_spring_security_logout" var="logoutUrl" />
             <div class="w3-quarter">
-                <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                <div class="w3-container w3-padding-16" style="background-color: #dbd6af">
                     <div class="w3-left"><i class="fa fa-user-plus w3-xxxlarge"></i></div>
                     <div class="w3-right"></div>
                     <div class="w3-clear"></div>
@@ -36,7 +39,7 @@
         </sec:authorize>
 
         <div class="w3-quarter">
-            <div class="w3-container w3-blue w3-padding-16">
+            <div class="w3-container w3-padding-16" style="background-color: #4c90b1">
                 <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
                 <div class="w3-right"></div>
                 <div class="w3-clear"></div>
