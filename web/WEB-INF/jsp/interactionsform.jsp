@@ -23,7 +23,7 @@
                         <form:hidden path="Clients_ID" />
                         <div class="w3-padding-8">
                             <div class="w3-panel w3-border w3-white">
-                                <p>${interactions.clients}</p>
+                                <p>${interactions.clients.customer}</p>
 
                             </div>
                         </div>
