@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="<c:url value="/media/font-awesome.min.css" />">
     <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
-    <body class="w3-light-grey">
+    <body style="background-color: #dbd6af">
 
         <div class="w3-container">
             <br/><br/>
@@ -19,14 +19,14 @@
 
                     <div class="w3-center"><br>
                         <span onclick="document.getElementById('id01').style.display = 'none'" class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
-                        <img src="<c:url value="/media/img/LionOfJudah.jpg" />" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+                        <img src="<c:url value="/media/img/OpenDoors_Logo_newest.jpg" />" alt="Avatar" style="width:30%" class="w3-square w3-margin-top">
                     </div>
 
                     <form id="loginForm" class="w3-container" action="<c:url value='/j_spring_security_login' />" method='POST'>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <div class="w3-section">
                             <c:if test="${not empty msg}">
-                                <div class="w3-panel w3-border w3-pale-blue w3-round-large"><p>${msg}</p></div>
+                                <div class="w3-panel w3-border w3-round-large"style="background-color: #98c8de"><p>${msg}</p></div>
                                     </c:if>
                                     <c:if test="${not empty error}">
                                 <div class="w3-panel w3-border w3-pale-red w3-round-large"><p>${error}</p></div>
@@ -36,7 +36,7 @@
                             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="username" required>
                             <label><b>Password</b></label>
                             <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" required>
-                            <button class="w3-btn-block w3-green w3-section w3-padding" type="submit">Login</button>
+                            <button class="w3-btn-block w3-section w3-padding" style="background-color: #60755b" type="submit">Login</button>
                         </div>
                     </form>
                 </div>
