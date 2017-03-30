@@ -25,7 +25,7 @@
                 <label>Enabled</label>
                 <form:select path="Roles" cssClass="w3-input w3-border" cssStyle="height:55px;" >                    
                     <form:options items="${users.rolesMap}" />
-                </form:select>
+                </form:select>                
                 Ctrl + click to select multiple items.
             </div>
 

@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@include file="header.jsp" %>
 
@@ -31,7 +32,9 @@
         </div>
             -->
 
-            <form:input path="Date_Of_Contact" cssClass="w3-input w3-border" placeholder="Date Of Contact"  />
+
+            <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${interactions.date_Of_Contact}" var="myDateVar"/>
+            <form:input path="Date_Of_Contact" value="${myDateVar}" cssClass="w3-input w3-border" placeholder="Date Of Contact" />
             <form:errors path="Date_Of_Contact" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;"></form:errors>
 
             <form:input path="Contact_First_Name" cssClass="w3-input w3-border" placeholder="Contact First Name"  />

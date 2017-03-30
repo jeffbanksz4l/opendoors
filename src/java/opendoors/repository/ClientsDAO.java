@@ -87,7 +87,7 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getClientsList() {
-        return template.query("SELECT * FROM Clients WHERE Status = 'Client'", new RowMapper<Clients>() {
+        return template.query("SELECT * FROM Clients WHERE Status = 'Client' ORDER BY Customer", new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
                 c.setClientsID(rs.getInt("Clients ID"));
@@ -112,7 +112,7 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getProspectsList() {
-        return template.query("SELECT * FROM Clients WHERE Status = 'Prospect'", new RowMapper<Clients>() {
+        return template.query("SELECT * FROM Clients WHERE Status = 'Prospect' ORDER BY Customer", new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients p = new Clients();
                 p.setClientsID(rs.getInt("Clients ID"));
@@ -137,7 +137,7 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getInactivesList() {
-        return template.query("SELECT * FROM Clients WHERE Status = 'Inactive'", new RowMapper<Clients>() {
+        return template.query("SELECT * FROM Clients WHERE Status = 'Inactive' ORDER BY Customer", new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
                 c.setClientsID(rs.getInt("Clients ID"));
@@ -179,7 +179,7 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getClientsByPage(int start, int total) {
-        String sql = "SELECT * FROM Clients WHERE Status = 'Client' LIMIT " + (start - 1) + "," + total;
+        String sql = "SELECT * FROM Clients WHERE Status = 'Client' ORDER BY Customer LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
@@ -207,7 +207,7 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getProspectsByPage(int start, int total) {
-        String sql = "SELECT * FROM Clients WHERE Status = 'Prospect' LIMIT " + (start - 1) + "," + total;
+        String sql = "SELECT * FROM Clients WHERE Status = 'Prospect' ORDER BY Customer LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();
@@ -235,7 +235,7 @@ public class ClientsDAO {
      * @return
      */
     public List<Clients> getInactivesByPage(int start, int total) {
-        String sql = "SELECT * FROM Clients WHERE Status = 'Inactive' LIMIT " + (start - 1) + "," + total;
+        String sql = "SELECT * FROM Clients WHERE Status = 'Inactive' ORDER BY Customer LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Clients>() {
             public Clients mapRow(ResultSet rs, int row) throws SQLException {
                 Clients c = new Clients();

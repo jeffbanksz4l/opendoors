@@ -96,7 +96,10 @@ public class InteractionsDAO {
      * @return
      */
     public List<Interactions> getInteractionsList() {
-        return template.query("SELECT * FROM Interactions", new RowMapper<Interactions>() {
+        return template.query("SELECT InteractionsID, Clients_ID, DATE_FORMAT(Date_Of_Contact, '%Y-%M-%d %H:%i'), Contact_First_Name, "
+                + "Contact_Last_Name, Contact_Type, Conversations "
+                + "FROM Interactions "
+                + "ORDER BY 'Clients_ID'", new RowMapper<Interactions>() {
             public Interactions mapRow(ResultSet rs, int row) throws SQLException {
                 Interactions i = new Interactions();
                 i.setClients_ID(rs.getInt("Clients ID"));
@@ -200,11 +203,36 @@ public class InteractionsDAO {
      *
      * @return
      */
+//    public List<Interactions> getInteractionsLimit() {
+//        String sql = "SELECT * FROM Interactions ORDER BY InteractionsID DESC LIMIT 5";
+//        return template.query(sql, new RowMapper<Interactions>() {
+//            public Interactions mapRow(ResultSet rs, int row) throws SQLException {
+//                Interactions i = new Interactions();
+//                i.setInteractionsID(rs.getInt(1));
+//                i.setClients_ID(rs.getInt(2));
+//                i.setDate_Of_Contact(rs.getDate(3));
+//                i.setContact_First_Name(rs.getString(4));
+//                i.setContact_Last_Name(rs.getString(5));
+//                i.setContact_Type(rs.getString(6));
+//                i.setConversations(rs.getString(7));
+//                return i;
+//            }
+//        });
+//    }
     public List<Interactions> getInteractionsLimit() {
-        String sql = "SELECT * FROM Interactions ORDER BY InteractionsID DESC LIMIT 5";
+        String sql = "SELECT interactions.InteractionsID, interactions.Clients_ID, "
+                + "interactions.Date_Of_Contact, interactions.Contact_First_Name, "
+                + "interactions.Contact_Last_Name, interactions.Contact_Type, "
+                + "interactions.Conversations, clients.ClientsID, clients.Customer "
+                + "FROM Interactions AS interactions "
+                + "INNER JOIN Clients AS clients ON clients.ClientsID = interactions.Clients_ID "
+                + "ORDER BY clients.Customer, interactions.Date_Of_Contact "
+                + "DESC LIMIT 5";
+
         return template.query(sql, new RowMapper<Interactions>() {
             public Interactions mapRow(ResultSet rs, int row) throws SQLException {
                 Interactions i = new Interactions();
+                Clients clients = new Clients();
                 i.setInteractionsID(rs.getInt(1));
                 i.setClients_ID(rs.getInt(2));
                 i.setDate_Of_Contact(rs.getDate(3));
@@ -212,6 +240,11 @@ public class InteractionsDAO {
                 i.setContact_Last_Name(rs.getString(5));
                 i.setContact_Type(rs.getString(6));
                 i.setConversations(rs.getString(7));
+//                Clients clients = new Clients();
+                clients.setClientsID(rs.getInt(8));
+                clients.setCustomer(rs.getString(9));
+
+                i.setClients(clients);
                 return i;
             }
         });
