@@ -17,11 +17,12 @@
                 <div class="w3-left"><i class="fa fa-info w3-xxxlarge"></i></div>
                 <div class="w3-right"></div>
                 <div class="w3-clear"></div>
-                <h3>${crowcount} - Clients</h3>
-                <!--
-                <h3>${prowcount} - Prospects</h3>
+                <h3><b>General Info</b></h3>
+                <h4>${crowcount} - Clients</h4>
+                <!-- Future
+                <h4>${prowcount} - Prospects</h4>
                 -->
-                <h3>${irowcount} - Interactions</h3>
+                <h4>${irowcount} - Interactions</h4>
             </div>
         </div>
 
@@ -30,9 +31,9 @@
                 <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
                 <div class="w3-right"></div>
                 <div class="w3-clear"></div>
-                <h3>Last 5 Clients</h3>
+                <h3><b>Last 5 Clients</b></h3>
                 <c:forEach var="cdisplay" items="${climit}">
-                    <ul>
+                    <ul style="list-style-type: none; padding-left: 0px">
                         <li>${cdisplay.customer}</li>
                     </ul>
                 </c:forEach>
@@ -44,19 +45,20 @@
                 <div class="w3-left"><i class="fa fa-comments w3-xxxlarge"></i></div>
                 <div class="w3-right"></div>
                 <div class="w3-clear"></div>
-                <h3>Last 5 Interactions</h3>
+                <h3><b>Last 5 Interactions</b></h3>
                 <c:forEach var="idisplay" items="${ilimit}">
-                    <ul>
+                    <ul style="list-style-type: none; padding-left: 0px">
                         <li>
                             <div class="w3-container">
 
-                                <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-button" style="background-color: #dbd6af">${idisplay.clients.customer}<br>Click to Display</button>
+                                <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-button" style="background-color: #dbd6af; width: 165px; text-overflow: ellipsis">${idisplay.clients.customer}<br>Click to Display</button>
 
                                 <div id="id01" class="w3-modal">
                                     <div class="w3-modal-content w3-card-8">
                                         <header class="w3-container w3-text-black" style="background-color: #b9cb9a"> 
                                             <span onclick="document.getElementById('id01').style.display = 'none'" 
                                                   class="w3-closebtn">&times;</span>
+                                            <p><b>${idisplay.clients.customer}</b></p>
                                             <p>${idisplay.conversations}</p>
                                         </header>
                                         <footer class="w3-container w3-text-black" style="background-color: #dbd6af">
@@ -90,8 +92,8 @@
                     <div class="w3-left"><i class="fa fa-user-plus w3-xxxlarge"></i></div>
                     <div class="w3-right"></div>
                     <div class="w3-clear"></div>
-                    <h3>Total Users</h3>
-                    <h3>${urowcount}</h3>
+                    <h3><b>Total Users</b></h3>
+                    <h4>${urowcount}</h4>
                 </div>
             </div>
         </sec:authorize>

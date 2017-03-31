@@ -16,7 +16,7 @@
             <th>Status</th>
             <th>Actions</th>
         </tr>
-        
+
         <c:forEach var="clients" items="${list}">
             <tr>
                 <td>${clients.customer}</td>
@@ -31,7 +31,7 @@
         </c:forEach>
     </table>
 
-    <!--
+    <!-- Future
     <div class="w3-container w3-text-white" style="background-color: #60755b">
         <h2>Client/Prospect Information</h2>
     </div>
@@ -68,34 +68,34 @@
     </div>
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-        <c:set target="clientID">
-            <tr>
-                <th>Customer</th>
-                <th>Address Line 1</th>
-                <th>Address Line 2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Postal Code</th>
-                <th>Email</th>
-                <th>Phone 1</th>
-                <th>Phone 2</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>  
-        </c:set>
+    <c:set target="clientID">
+        <tr>
+            <th>Customer</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Email</th>
+            <th>Phone 1</th>
+            <th>Phone 2</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>  
+    </c:set>
 
-        <c:forEach var="clients" items="${list}">
-            <tr>
-                <td>${clients.customer}</td>
-                <td>${clients.status}</td>
-                <td>
-                    <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
-                    <a href="<c:url value="/clients/deleteclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-text-black" style="background-color: #dbd6af" onclick="return confirm('Are you sure you want to delete this Client/Prospect?');" >Change to Inactive</button></a>
-                    <a href="<c:url value="/interactions/interactionsform/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #5b7885">Add Interaction</button></a>
-                </td>  
-            </tr>
-        </c:forEach>
-    </table>
+    <c:forEach var="clients" items="${list}">
+        <tr>
+            <td>${clients.customer}</td>
+            <td>${clients.status}</td>
+            <td>
+                <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
+                <a href="<c:url value="/clients/deleteclients/${clients.clientsID}" />"><button class="w3-btn w3-round w3-text-black" style="background-color: #dbd6af" onclick="return confirm('Are you sure you want to delete this Client/Prospect?');" >Change to Inactive</button></a>
+                <a href="<c:url value="/interactions/interactionsform/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #5b7885">Add Interaction</button></a>
+            </td>  
+        </tr>
+    </c:forEach>
+</table>
     -->
 
 </div>

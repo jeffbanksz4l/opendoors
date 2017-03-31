@@ -42,7 +42,41 @@
                 <td>${interactions.date_Of_Contact}</td>
                 <td>${interactions.contact_First_Name} ${interactions.contact_Last_Name}</td>
                 <td>${interactions.contact_Type}</td>
-                <td>${interactions.conversations}</td>
+                <td>
+                    <!-- 
+                    <div class="w3-container">
+
+                        <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-button" style="background-color: #dbd6af">Click to Display</button>
+
+                        <div id="id01" class="w3-modal">
+                            <div class="w3-modal-content w3-card-8">
+                                <header class="w3-container w3-text-black" style="background-color: #b9cb9a"> 
+                                    <span onclick="document.getElementById('id01').style.display = 'none'" 
+                                          class="w3-closebtn">&times;</span>
+                                    <p>${interactions.conversations}</p>
+                                </header>
+                                <footer class="w3-container w3-text-black" style="background-color: #dbd6af">
+                                    <p>Click on the "x" or click anywhere to close this pop-up!</p>
+                                </footer>
+                            </div>
+                        </div>
+
+                    </div>
+                    <script>
+                        // Get the modal
+                        var modal = document.getElementById('id01');
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
+                    -->
+
+                    ${interactions.conversations}
+                </td>
                 <td>
                     <a href="<c:url value="/interactions/editinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
                     <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-text-black" style="background-color: #dbd6af" onclick="return confirm('Are you sure you want to delete this Interaction?');">Delete</button></a>

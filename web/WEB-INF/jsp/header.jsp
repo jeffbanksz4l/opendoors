@@ -26,12 +26,12 @@
         <nav class="w3-sidenav w3-collapse w3-animate-left" style="z-index:3;width:300px;background-color: #60755b" id="mySidenav"><br>
             <div class="w3-container w3-row">
                 <div class="w3-col s4">
-                    <img src="<c:url value="/media/img/LionOfJudah.jpg" />" class="w3-circle w3-margin-right" style="width:46px">
+                    <img src="<c:url value="/media/img/OpenDoors_Logo_newest.jpg" />" class="w3-square w3-margin-right" style="width:100px">
                 </div>
                 <div class="w3-col s8">
                     <sec:authorize access="hasRole('ROLE_USER')">
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <span>Welcome, <strong>${pageContext.request.userPrincipal.name}</strong></span><br>
+                            <span><a style="margin: 15px"><strong>Welcome, ${pageContext.request.userPrincipal.name}</strong></a></span><br>
                         </c:if>
                         <!--
                         <a href="#" class="w3-hover-none w3-hover-text-red w3-show-inline-block"><i class="fa fa-envelope"></i></a>
@@ -81,7 +81,7 @@
                 </div>
 
 
-                <!-- 
+                <!-- Future
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-user-plus fa-fw"></i> Client View <i class="fa fa-caret-down"></i></a>
                 <div class="w3-hide w3-white w3-card-4">
                     <a href="<c:url value="/users/viewdetails" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i> Client View </a>
