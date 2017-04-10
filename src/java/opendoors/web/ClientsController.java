@@ -111,16 +111,16 @@ public class ClientsController {
         return this.viewinactives(1, request);
     }
 
-//    /**
-//     * Mapping to View Details
-//     *
-//     * @param request
-//     * @return
-//     */
-//    @RequestMapping("/clients/viewdetails")
-//    public ModelAndView viewdetails(HttpServletRequest request) {
-//        return this.viewdetails(1, request);
-//    }
+    /**
+     * Mapping to View Details
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/clients/viewdetails")
+    public ModelAndView viewdetails(HttpServletRequest request) {
+        return this.viewdetails(request);
+    }
 
     /**
      * Mapping the Convert the status of existing Clients/Prospects to Inactive

@@ -81,12 +81,13 @@
                 </div>
 
 
-                <!-- Future
+                <!--
                 <a style="background-color: #5b7885" class="w3-text-white" onclick="myAccFunc(this)" href="#" ><i class="fa fa-user-plus fa-fw"></i> Client View <i class="fa fa-caret-down"></i></a>
                 <div class="w3-hide w3-white w3-card-4">
-                    <a href="<c:url value="/users/viewdetails" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i> Client View </a>
+                    <a href="<c:url value="/clients/viewdetails" />" class="w3-padding" style="background-color: #79a0b1"><i class="fa fa-user-plus fa-fw"></i> Client View </a>
                 </div>
                 -->
+
 
             </sec:authorize>
 

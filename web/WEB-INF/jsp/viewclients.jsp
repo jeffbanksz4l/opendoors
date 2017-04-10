@@ -34,9 +34,7 @@
                 <td>${clients.status}</td>
                 <td>
                     <a href="<c:url value="/clients/editclients/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Edit</button></a>
-                    <!-- 
-                    <a href="<c:url value="/clients/clientdisplay/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Display</button></a>
-                    -->
+                    <a href="<c:url value="/clients/viewdetails/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #60755b">Display</button></a>
                     <a href="<c:url value="/clients/convert/${clients.clientsID}" />"><button class="w3-btn w3-round w3-text-black" style="background-color: #dbd6af">Change to Inactive</button></a>
                     <a href="<c:url value="/interactions/interactionsform/${clients.clientsID}" />"><button class="w3-btn w3-round" style="background-color: #5b7885">Add Interaction</button></a>
                 </td>  
