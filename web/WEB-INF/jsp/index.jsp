@@ -19,10 +19,10 @@
                 <div class="w3-clear"></div>
                 <h3><b>General Info</b></h3>
                 <h4>${crowcount} - Clients</h4>
-                <!-- Future
                 <h4>${prowcount} - Prospects</h4>
-                -->
+                <h4>${xrowcount} - Inactives</h4>
                 <h4>${irowcount} - Interactions</h4>
+                <h4>${urowcount} - Users</h4>
             </div>
         </div>
 

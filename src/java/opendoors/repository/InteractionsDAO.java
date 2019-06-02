@@ -154,7 +154,6 @@ public class InteractionsDAO {
                 i.setContact_Last_Name(rs.getString(5));
                 i.setContact_Type(rs.getString(6));
                 i.setConversations(rs.getString(7));
-//                Clients clients = new Clients();
                 clients.setClientsID(rs.getInt(8));
                 clients.setCustomer(rs.getString(9));
 

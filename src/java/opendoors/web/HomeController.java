@@ -45,6 +45,8 @@ public class HomeController {
         context.put("ilimit", ilimit);
 
         context.put("crowcount", cdao.getClientsCount());
+        context.put("prowcount", cdao.getProspectsCount());
+        context.put("xrowcount", cdao.getInactivesCount());
         context.put("irowcount", idao.getInteractionsCount());
         context.put("urowcount", udao.getUsersCount());
 

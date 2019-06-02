@@ -119,7 +119,6 @@ public class InteractionsController {
     public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
         int start = 1;
-
         if (pageid != 1) {
             start = (pageid - 1) * total + 1;
         }
@@ -132,7 +131,7 @@ public class InteractionsController {
         int count = dao.getInteractionsCount();
         context.put("pages", Math.ceil((float) count / (float) total));
 
-        context.put("pages", pageid);
+        context.put("page", pageid);
 
         Message msg = (Message) request.getSession().getAttribute("message");
 

@@ -23,9 +23,7 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <!-- 
             <th>Interactions ID</th>
-            -->
             <th>Customer</th>
             <th>Date Of Contact</th>
             <th>Contact Name</th>
@@ -34,10 +32,8 @@
         </tr>  
 
         <c:forEach var="interactions" items="${list}">   
-            <tr>  
-                <!-- 
+            <tr>
                 <td>${interactions.interactionsID}</td>
-                -->
                 <td>${interactions.clients.customer}</td>
                 <td>${interactions.date_Of_Contact}</td>
                 <td>${interactions.contact_First_Name} ${interactions.contact_Last_Name}</td>
